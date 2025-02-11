@@ -17,6 +17,7 @@
             texlive.combined.scheme-full
             texlab
             tectonic
+	    tex-fmt
           ];
         };
       });

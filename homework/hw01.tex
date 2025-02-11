@@ -1,20 +1,1279 @@
 % homework/hw01.tex
-\section*{Week 1 Homework - Sections 1.2 and 1.3}
 \begin{center}
+  \section*{Homework 01 - 1.2, 1.3}
   Due Wed 2/5 \\
-  Your Name
+  Uzair Hamed Mohammed
 \end{center}
 
-\subsection*{Question 1: Polynomial Interpolation}
+\subsection*{1.2 Review of Calculus}
+
 \begin{enumerate}
-  \item[(a)] Prove Lagrange basis polynomials satisfy $\ell_i(x_j) = \delta_{ij}$.
-  
-  \item[(b)] Construct the interpolating polynomial for $f(x) = \sin(x)$ at nodes $x_0=0$, $x_1=\pi/2$.
+  \item Show that the following equations have at least one solution
+    in the given intervals.
+    \begin{itemize}
+      \item[a.] $x \cos x - 2x^2 + 3x -1 = 0, \hspace{20pt} [0.2,
+        0.3] \textrm{ and } [1.2, 1.3]$
+
+        \underline{Sol:} \\
+        For interval $[0.2, 0.3]$:
+        $$
+        \begin{array}{l}
+          f(0.2) = 0.2 \cos (0.2) - 2 (0.2)^2 + 3 (0.2) - 1 = -0.284 \\
+          f(0.3) = 0.3 \cos (0.3) - 2 (0.3)^2 + 3 (0.3) - 1 = 0.0066
+        \end{array}
+        $$
+
+        For interval $[1.2, 1.3]$:
+        $$
+        \begin{array}{l}
+          f(1.2) = 1.2 \cos (1.2) - 2 (1.2)^2 + 3 (1.2) - 1 = 0.1548 \\
+          f(1.3) = 1.3 \cos (1.3) - 2 (1.3)^2 + 3 (1.3) - 1 = -0.132
+        \end{array}
+        $$
+
+        Therefore, $x \cos x - 2x^2 + 3x - 1$ has at least one
+        solution in both intervals due to sign changes and contunity of f(x)
+
+        \bigbreak
+
+      \item[b.] $(x-2)^2 - \ln x = 0, \hspace{20pt} [1, 2] \textrm{
+        and } [e, 4]$
+
+        \underline{Sol:}\\
+        For interval $[1, 2]$:
+        $$
+        \begin{array}{l}
+          f(1) = (1-2)^2 - \ln(1) = 1 \\
+          f(2) = (2-2)^2 - \ln(2) = -0.693
+        \end{array}
+        $$
+
+        For interval $[e, 4]$:
+        $$
+        \begin{array}{l}
+          f(e) = (e-2)^2 - \ln(e) = -0.484  \\
+          f(4) = (4-2)^2 - \ln(4) = 2.61
+        \end{array}
+        $$
+
+        Therefore, $(x-2)^2 - \ln x = 0$ has at least one solution in
+        both intervals due to sign changes and contunity of f(x)
+
+        \bigbreak
+
+      \item[c.] $2x \cos (2x) - (x-2)^2 = 0, \hspace{20pt} [2, 3]
+        \textrm{ and } [3, 4]$
+
+        \underline{Sol:}\\
+        For interval $[2, 3]$:
+        $$
+        \begin{array}{l}
+          f(2) = 2(2) \cos(2 \times 2) - (2 - 2)^2 = -2.61\\
+          f(3) = 2(3) \cos(2 \times 3) - (3 - 2)^2 = 4.761
+        \end{array}
+        $$
+
+        For interval $[3, 4]$:
+        $$
+        \begin{array}{l}
+          f(3) = 2(3) \cos(2 \times 3) - (3 - 2)^2 = 4.761  \\
+          f(4) = 2(4) \cos(2 \times 4) - (4 - 2)^2 = -5.164
+        \end{array}
+        $$
+
+        Therefore, $2x \cos (2x) - (x-2)^2 = 0$ has at least one
+        solution in both intervals due to sign changes and contunity of f(x)
+
+        \bigbreak
+      \item[d.] $x - (\ln x)^x = 0, \hspace{20pt} [4, 5]$
+
+        \underline{Sol:}\\
+        For interval $[4, 5]$:
+        $$
+        \begin{array}{l}
+          f(4) = 4 - (\ln 4)^4 = 0.306\\
+          f(5) = 5 - (\ln 5)^5 = -5.798
+        \end{array}
+        $$
+
+        Therefore, $x - (\ln x)^x = 0$ has at least one solution in
+        the interval due to sign changes and contunity of f(x)
+    \end{itemize}
+
+  \item Find intervals containing solutions to the following equations.
+    \begin{itemize}
+      \item[a.] $x-3^{-x} = 0$
+
+        \underline{Sol:}\\
+        $$
+        \begin{array}{l}
+          f(0) = 0 - 3^0 = \textrm{-}\\
+          f(1) = 1 - 3^{-1} = \textrm{+}
+        \end{array}
+        $$
+
+        The interval is $[0, 1]$
+
+        \bigbreak
+      \item[b.] $4x^2 - e^x = 0$
+
+        \underline{Sol:}\\
+        $$
+        \begin{array}{l}
+          f(0) = 4(0)^2 - e^0 = -\\
+          f(1) = 4(1)^2 - e^1 = +
+        \end{array}
+        $$
+
+        The interval is $[0, 1]$
+        \bigbreak
+
+      \item[c.] $x^3 - 2x^2 - 4x + 3 = 0$
+
+        \underline{Sol:}\\
+        $$
+        \begin{array}{l}
+          f(0) = 0^3 - 2*0^2 - 4*0 + 3 = + \\
+          f(1) = 1^3 - 2^2 - 4 + 3 = -
+        \end{array}
+        $$
+
+        The interval is $[0, 1]$
+
+        \bigbreak
+      \item[d.] $x^3 = 4.001x^2 + 4.002x = 1.101 = 0$
+
+        \underline{Sol:}\\
+
+        $$
+        \begin{array}{l}
+          f(-3) = (-3)^3 = 4.001(-3)^2 + 4.002(-3) = 1.101 = -\\
+          f(-2) = (-2)^3 = 4.001(-2)^2 + 4.002(-2) = 1.101 = +
+        \end{array}
+        $$
+
+        The interval is $[-3, -2]$
+        \bigbreak
+
+    \end{itemize}
+
+  \item Show that the first derivatives of the following functions
+    are zero at least once in the given interests.
+    \begin{itemize}
+      \item[a.] $f(x) = 1-e^x + (e - 1) \sin(\frac{\pi}{2} x),
+        \hspace{20pt} [0, 1]$
+
+        \underline{Sol}:\\
+        $$
+        \begin{array}{l}
+          f(0) = 1-e^0 + (0 - 1) \sin(\frac{\pi}{2} 0) = 0 \\
+          f(1) = 1-e^1 + (1 - 1) \sin(\frac{\pi}{2} 1) = 0
+        \end{array}
+        $$
+
+        Since $f(x)$ is differentiable in the given open interval and
+        continuous in the given closed interval, by Rolle's Theorem,
+        there exists $c \in (0, 1)$ such that $f'(c) = 0$
+
+        \bigbreak
+
+      \item[b.] $f(x) = (x-1) \tan x + x \sin \pi x, \hspace{20pt} [0, 1]$
+
+        \underline{Sol:}\\
+        $$
+        \begin{array}{l}
+          f(0) = (0-1) \tan 0 + 0 \sin \pi 0 = 0 \\
+          f(1) = (1-1) \tan 1 + 1 \sin \pi 1 = 0
+        \end{array}
+        $$
+
+        Since $f(x)$ is differentiable in the given open interval and
+        continuous in the given closed interval, by Rolle's Theorem,
+        there exists $c \in (0, 1)$ such that $f'(c) = 0$
+
+        \bigbreak
+      \item[c.] $f(x) = x \sin \pi x - (x-2) \ln x, \hspace{20pt} [1, 2]$
+
+        \underline{Sol:}\\
+        $$
+        \begin{array}{l}
+          f(0) = 0 \sin \pi 0 - (0-2) \ln 0 \\
+          f(1) = 1 \sin \pi 1 - (1-2) \ln 1
+        \end{array}
+        $$
+
+        Since $f(x)$ is differentiable in the given open interval and
+        continuous in the given closed interval, by Rolle's Theorem,
+        there exists $c \in (0, 1)$ such that $f'(c) = 0$
+
+        \bigbreak
+      \item[d.] $f(x) = (x - 2) \sin x \ln(x + 2), \hspace{20pt} [-1, 3]$
+    \end{itemize}
+
+  \item Find $\textrm{max}_{a \le x \le b} |f(x)|$ for the following
+    functions and intervals.
+    \begin{itemize}
+      \item[a.] $f(x) = \frac{(2-e^x + 2x)}{3}, \hspace{20pt} [0, 1]$
+
+        \underline{Sol:}\\
+
+        $$
+        \begin{array}{l}
+          f'(x) = \frac{2-e^x}{3}\\
+          x = \ln 2\\
+          f(0) = \frac{1}{3}\\
+          f(1) = \frac{4 - e}{3}
+        \end{array}
+        $$
+
+        Max = $\frac{2 \ln 2}{3}$
+
+        \bigbreak
+      \item[b.] $f(x) = \frac{(4x-3)}{(x^2-2x)}, \hspace{20pt} [0.5, 1]$
+
+        \underline{Sol:}\\
+
+        $$
+        \begin{array}{l}
+        f'(x) = \frac{-4x^2 + 6x - 6)}{(x^2-2x)^2}\\
+        f(0.5) = \frac{4}{3}\\
+        f(1) = -1
+      \end{array}
+      $$
+
+      Max = $\frac{4}{3}$
+
+      \bigbreak
+    \item[c.] $f(x) = 2x \cos(2x)-(x-2)^2, \hspace{20pt} [2, 4]$
+    \item[d.] $f(x) = 1 + e^{- \cos(x-1)}, \hspace{20pt} [1, 2]$
+  \end{itemize}
+
+\item Let $f(x) = x^3$
+
+  \underline{Sol:}\\
+
+  \[
+    \begin{array}{l}
+      \text{a.} P_2 (x) = 0\\
+      \text{b. Error} = 0.125\\
+      \text{c.} P_2 (x) = 1 + 3 (x-1) + 3 (x-1)^2\\
+      \text{d.} R_2 = -0.125, \text{ actual error} = -0.125
+    \end{array}
+  \]
+\item Let $f(x) = \sqrt{x + 1}$
+    
+    \underline{Sol:}\\
+    \[
+      \begin{array}{l}
+        \text{a.} P_3 (x) = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16} x^3\\
+        \text{b.} 0.7109, 0.8662, 1.1182, 1.2344\\
+        \text{c.} -0.0038, -0.0002, -0.0002, -0.0097
+      \end{array}
+    \]
+\item Find the second Taylor Polynomial \( P_2(x) \) for the function
+  \( f(x) = e^x \cos x \) about \( x_0 = 0 \).
+  \begin{itemize}
+    \item[a.] Use \( P_2(0.5) \) to approximate \( f(0.5) \). Find an
+      upper bound for error \( |f(0.5) - P_2(0.5)| \) using the error
+      formula, and compare it to the actual error.
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          P_2(x) = 1 + x \\
+          P_2(0.5) = 1.5 \\
+          \textrm{Actual } f(0.5) \approx 1.445 \\
+          \textrm{Error: } |1.445 - 1.5| = 0.055 \\
+          \textrm{Error bound: } \frac{4.473}{6}(0.5)^3 \approx 0.0932
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] Find a bound for the error \( |f(x) - P_2(x)| \) in
+      using \( P_2(x) \) to approximate \( f(x) \) on the interval \([0,1]\).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Error bound: } \frac{7.525}{6} \cdot 1^3 = 1.254
+      \]
+      \bigbreak
+
+    \item[c.] Approximate \( \int_0^1 f(x) \, dx \) using \( \int_0^1
+      P_2(x) \, dx \).
+
+      \underline{Sol:}\\
+      \[
+        \int_0^1 P_2(x) \, dx = 1.5 \quad \Rightarrow \quad 1.5
+      \]
+      \bigbreak
+
+    \item[d.] Find an upper bound for the error in 7c using \(
+      \int_0^1 |R_2(x)| \, dx \), and compare the bound to the actual error.
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Error bound: } \frac{7.525}{24} \approx 0.3136 \\
+          \textrm{Actual error: } |1.394 - 1.5| = 0.106
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Find the Third Taylor polynomial \( P_3(x) \) for the function
+  \( f(x) = (x-1) \ln(x) \) about \( x_0 = 1 \).
+
+  \begin{itemize}
+    \item[a.] Use \( P_3(0.5) \) to approximate \( f(0.5) \). Find an
+      upper bound for error \( |f(0.5) - P_3(0.5)| \) using the error
+      formula, and compare it to the actual error.
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          P_3(x) = (x-1)^2 - \frac{1}{2}(x-1)^3 \\
+          P_3(0.5) = 0.3125 \\
+          \textrm{Actual } f(0.5) \approx 0.3466 \\
+          \textrm{Error: } 0.0341 \\
+          \textrm{Error bound: } \frac{112}{24} \cdot (0.5)^4 \approx 0.2917
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] Find a bound for the error \( |f(x) - P_3(x)| \) in
+      using \( P_3(x) \) to approximate \( f(x) \) on the interval
+      \([0.5, 1.5]\).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Error bound: } \frac{112}{24} \cdot (0.5)^4 \approx 0.2917
+      \]
+      \bigbreak
+
+    \item[c.] Approximate \( \int_{0.5}^{1.5} f(x) \, dx \) using \(
+      \int_{0.5}^{1.5} P_3(x) \, dx \).
+
+      \underline{Sol:}\\
+      \[
+        \int_{0.5}^{1.5} P_3(x) \, dx \approx 0.0833
+      \]
+      \bigbreak
+
+    \item[d.] Find an upper bound for the error in 8c using \(
+      \int_{0.5}^{1.5} |R_3(x)| \, dx \), and compare the bound to
+      the actual error.
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Error bound: } \approx 0.0583 \\
+          \textrm{Actual error: } |0.088 - 0.0833| \approx 0.0047
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Use the error term of a Taylor polynomial to estimate the error
+  involved in using \( \sin x \approx x \) to approximate \( \sin 1^\circ \).
+
+  \underline{Sol:}\\
+  \[
+    \begin{array}{l}
+      \textrm{Convert } 1^\circ \textrm{ to radians: } x =
+      \frac{\pi}{180} \approx 0.0174533. \\
+      \textrm{Error term for } P_1(x) = x \textrm{ is } |R_1(x)| \leq
+      \frac{|x|^3}{6}. \\
+      |R_1| \leq \frac{(\pi/180)^3}{6} \approx 8.85 \times 10^{-7}. \\
+      \textrm{Error bound: } \approx 8.85 \times 10^{-7}.
+    \end{array}
+  \]
+  \bigbreak
+
+\item Use a Taylor polynomial about \( \frac{\pi}{4} \) to
+  approximate \( \cos 42^\circ \) to an accuracy of \( 10^{-6} \).
+
+  \underline{Sol:}\\
+  \[
+    \begin{array}{l}
+      \textrm{Convert } 42^\circ \textrm{ to radians: } x =
+      \frac{7\pi}{30} \approx 0.733. \\
+      \textrm{Center at } a = \frac{\pi}{4} \approx 0.785. \\
+      \textrm{Compute } |x - a| = \frac{\pi}{60} \approx 0.05236. \\
+      \textrm{Find smallest } n \textrm{ such that }
+      \frac{(\pi/60)^{n+1}}{(n+1)!} \leq 10^{-6}. \\
+      \textrm{For } n = 3: \frac{(0.05236)^4}{24} \approx 3.12 \times
+      10^{-7} \leq 10^{-6}. \\
+      \textrm{Use } P_3(x) \textrm{ about } \frac{\pi}{4} \textrm{
+      with terms up to } (x - \frac{\pi}{4})^3.
+    \end{array}
+  \]
+  \bigbreak
+
+\item Let \( f(x) = e^{x/2} \sin(x/3) \). Determine the following:
+  \begin{itemize}
+    \item[a.] The third Maclaurin polynomial \( P_3(x) \).
+
+      \underline{Sol:}\\
+      \[
+        P_3(x) = \frac{x}{3} + \frac{x^2}{6} + \frac{23}{648}x^3
+      \]
+      \bigbreak
+
+    \item[b.] A bound for the error \( |f(x) - P_3(x)| \) on \([0,1]\).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Error bound: } \frac{5}{1296} \approx 0.00386
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Let \( f(x) = \ln(x^2 + 2) \). Determine the following:
+  \begin{itemize}
+    \item[a.] The Taylor polynomial \( P_3(x) \) for \( f \) expanded
+      about \( x_0 = 1 \).
+
+      \underline{Sol:}\\
+      \[
+        P_3(x) = \ln 3 + \frac{2}{3}(x-1) + \frac{1}{9}(x-1)^2 +
+        \frac{2}{81}(x-1)^3
+      \]
+      \bigbreak
+
+    \item[b.] The maximum error \( |f(x) - P_3(x)| \) for \( 0 \leq x \leq 1 \).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Error bound: } 0.125
+      \]
+      \bigbreak
+
+    \item[c.] The Maclaurin polynomial \( \tilde{P}_3(x) \) for \( f \).
+
+      \underline{Sol:}\\
+      \[
+        \tilde{P}_3(x) = \ln 2 + \frac{x^2}{2}
+      \]
+      \bigbreak
+
+    \item[d.] The maximum error \( |f(x) - \tilde{P}_3(x)| \) for \(
+      0 \leq x \leq 1 \).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Error bound: } 0.125
+      \]
+      \bigbreak
+
+    \item[e.] Does \( P_3(0) \) approximate \( f(0) \) better than \(
+      \tilde{P}_3(1) \) approximates \( f(1) \)?
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Error at } P_3(0): |\ln 2 - 0.5183| \approx 0.1748 \\
+          \textrm{Error at } \tilde{P}_3(1): |\ln 3 - 1.1931| \approx 0.0945 \\
+          \textrm{No, } \tilde{P}_3(1) \textrm{ approximates } f(1)
+          \textrm{ better.}
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Find a bound for the maximum error when using \( P_2(x) = 1 -
+  \frac{1}{2}x^2 \) to approximate \( f(x) = \cos x \) on
+  \(\left[-\frac{1}{2}, \frac{1}{2}\right]\).
+
+  \underline{Sol:}\\
+  \[
+    \begin{array}{l}
+      \textrm{Error term: } R_2(x) = \frac{f^{(4)}(c)}{4!}x^4 \quad
+      (c \in [-1/2, 1/2]) \\
+      \textrm{Since } f^{(4)}(x) = \cos x \textrm{, } |f^{(4)}(c)| \leq 1 \\
+      \textrm{Max } |x|^4 \leq \left(\frac{1}{2}\right)^4 = \frac{1}{16} \\
+      \textrm{Error bound: } |R_2(x)| \leq \frac{1}{24} \cdot
+      \frac{1}{16} = \frac{1}{384} \approx 0.0026
+    \end{array}
+  \]
+  \bigbreak
+\item The \( n \)-th Taylor polynomial for a function \( f \) at \(
+  x_0 \) is sometimes referred to as the polynomial of degree at most
+  \( n \) that best approximates \( f \) near \( x_0 \).
+  \begin{itemize}
+    \item[a.] Explain why this description is accurate.
+
+      \underline{Sol:}\\
+      The \( n \)-th Taylor polynomial \( P_n(x) \) matches \( f \)
+      and its first \( n \) derivatives at \( x_0 \). This ensures
+      the polynomial shares the function’s value, slope, curvature,
+      and higher-order behaviors at \( x_0 \), minimizing the
+      approximation error near \( x_0 \). The error \( |f(x) -
+      P_n(x)| \) grows only with \( |x - x_0|^{n+1} \), making \(
+      P_n(x) \) the "best" local approximation among polynomials of
+      degree \( \leq n \).
+      \bigbreak
+
+    \item[b.] Find the quadratic polynomial that best approximates a
+      function \( f \) near \( x_0 = 1 \) if the tangent line at \(
+      x_0 = 1 \) has equation \( y = 4x - 1 \), and \( f''(1) = 6 \).
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{From the tangent line: } f(1) = 3, \quad f'(1) = 4. \\
+          \textrm{Quadratic polynomial: } \\
+          P_2(x) = f(1) + f'(1)(x-1) + \frac{f''(1)}{2}(x-1)^2 \\
+          P_2(x) = 3 + 4(x-1) + 3(x-1)^2.\\
+
+
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item The error function is defined by
+  \[
+    \operatorname{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \, dt.
+  \]
+  \begin{itemize}
+    \item[a.] Integrate the Maclaurin series for \( e^{-t^2} \) to show that
+      \[
+        \operatorname{erf}(x) = \frac{2}{\sqrt{\pi}}
+        \sum_{k=0}^{\infty} \frac{(-1)^k x^{2k+1}}{(2k+1)k!}.
+      \]
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Maclaurin series: } e^{-t^2} = \sum_{k=0}^\infty
+          \frac{(-1)^k t^{2k}}{k!}. \\
+          \textrm{Integrate term-by-term: } \int_0^x e^{-t^2} dt =
+          \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)k!} x^{2k+1}. \\
+          \textrm{Multiply by } \frac{2}{\sqrt{\pi}} \textrm{ to
+          obtain the series.}
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] Verify that the two series agree for \( k = 1, 2, 3, 4 \).
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Expand both series up to } k=4: \\
+          \textrm{Series (a): } \frac{2}{\sqrt{\pi}} \left( x -
+            \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} +
+          \frac{x^9}{216} \right). \\
+          \textrm{Series (b): } \frac{2}{\sqrt{\pi}} e^{-x^2} \left(
+            x + \frac{2x^3}{3} + \frac{4x^5}{15} + \frac{8x^7}{105} +
+          \frac{16x^9}{945} \right). \\
+          \textrm{Multiply } e^{-x^2} \approx 1 - x^2 + \frac{x^4}{2}
+          - \frac{x^6}{6} + \frac{x^8}{24} \textrm{ into series (b):} \\
+          \textrm{Result matches series (a) up to } x^9 \textrm{
+          (coefficients agree).}
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] Approximate \( \operatorname{erf}(1) \) to within \( 10^{-7} \).
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Compute terms until } \frac{2}{\sqrt{\pi}} \cdot
+          \frac{1}{(2k+1)k!} < 10^{-7}. \\
+          \textrm{At } k=6: \frac{2}{\sqrt{\pi}} \cdot \frac{1}{13
+          \cdot 6!} \approx 1.08 \times 10^{-8} < 10^{-7}. \\
+          \operatorname{erf}(1) \approx 0.84270079.
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] Use the same number of terms (\( k=6 \)) with the
+      series in part (b).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Approximation: } \operatorname{erf}(1) \approx
+        0.84270079 \quad \textrm{(same accuracy as part c).}
+      \]
+      \bigbreak
+
+    \item[e.] Explain difficulties using the series in part (b).
+
+      \underline{Sol:}\\
+      \[
+        \textrm{Series (b) requires multiplying two infinite series,
+          leading to computational complexity and potential loss of
+          precision due to alternating signs. Additionally, terms grow
+        before decaying, causing numerical instability.}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Verify that \( |\sin x| \leq |x| \) for all \( x \).
+  \begin{itemize}
+    \item[a.] Show that for \( x \geq 0 \), \( f(x) = x - \sin x \)
+      is non-decreasing, implying \( \sin x \leq x \).
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          f'(x) = 1 - \cos x \geq 0 \quad (\text{since } \cos x \leq
+          1 \text{ for all } x). \\
+          \Rightarrow f(x) \text{ is non-decreasing on } [0, \infty). \\
+          \text{At } x = 0: f(0) = 0 - \sin 0 = 0. \\
+          \text{For } x \geq 0: f(x) \geq f(0) \implies x - \sin x
+          \geq 0 \implies \sin x \leq x.
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] Conclude using \( \sin(-x) = -\sin x \).
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \text{For } x < 0: \\
+          |\sin x| = |\sin(-x)| = |-\sin(-x)| = |\sin(-x)| \leq |-x|
+          = |x| \quad (\text{by part (a)}). \\
+          \text{Thus, } |\sin x| \leq |x| \text{ for all } x \in \mathbb{R}.
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
 \end{enumerate}
 
-\subsection*{Question 2: Rounding Miaus}
+\subsection*{1.3 Round-Off Error and Computer Arithmetic}
+
 \begin{enumerate}
-  \item[(a)] Compute the absolute error in approximating $\sqrt{2}$ with 1.4142.
-  
-  \item[(b)] Explain truncation vs. rounding errors.
+\item Compute the absolute error and relative error in approximations
+  of \( p \) by \( p^* \).
+  \begin{itemize}
+    \item[a.] \( p = \pi \), \( p^* = \frac{22}{7} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| \pi - \frac{22}{7} \right|
+          \approx 0.001264 \\
+          \textrm{Relative error: } \frac{0.001264}{\pi} \approx
+          0.000402 \quad (0.0402\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( p = \pi \), \( p^* = 3.1416 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| \pi - 3.1416 \right|
+          \approx 0.00000735 \\
+          \textrm{Relative error: } \frac{0.00000735}{\pi} \approx
+          0.00000234 \quad (0.000234\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( p = e \), \( p^* = 2.718 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| e - 2.718 \right| \approx
+          0.0002818 \\
+          \textrm{Relative error: } \frac{0.0002818}{e} \approx
+          0.0001037 \quad (0.01037\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( p = \sqrt{2} \), \( p^* = 1.414 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| \sqrt{2} - 1.414 \right|
+          \approx 0.0002136 \\
+          \textrm{Relative error: } \frac{0.0002136}{\sqrt{2}}
+          \approx 0.000151 \quad (0.0151\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[e.] \( p = e^{10} \), \( p^* = 22000 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| e^{10} - 22000 \right|
+          \approx 26.4658 \\
+          \textrm{Relative error: } \frac{26.4658}{e^{10}} \approx
+          0.001201 \quad (0.1201\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[f.] \( p = 10^{\pi} \), \( p^* = 1400 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| 10^{\pi} - 1400 \right| \approx 15 \\
+          \textrm{Relative error: } \frac{15}{10^{\pi}} \approx
+          0.01083 \quad (1.083\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[g.] \( p = 8! \), \( p^* = 39900 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| 40320 - 39900 \right| = 420 \\
+          \textrm{Relative error: } \frac{420}{40320} \approx 0.0104
+          \quad (1.04\%)
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[h.] \( p = 9! \), \( p^* = \sqrt{18\pi} \left( \frac{9}{e}
+      \right)^9 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Absolute error: } \left| 362880 - 359500 \right|
+          \approx 3380 \\
+          \textrm{Relative error: } \frac{3380}{362880} \approx
+          0.00931 \quad (0.931\%)
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Perform the following computations (i) exactly, (ii) using
+  three-digit chopping arithmetic, and (iii) using three-digit
+  rounding arithmetic. (iv) Compute the relative errors in (ii) and (iii).
+  \begin{itemize}
+    \item[a.] \( \frac{4}{5} + \frac{1}{3} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{(i) Exact: } \frac{17}{15} \approx 1.1333333333 \\
+          \textrm{(ii) Chopping: } 1.13 \\
+          \textrm{(iii) Rounding: } 1.13 \\
+          \textrm{(iv) Relative errors: } 0.294\% \quad \textrm{(both)}
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( \frac{4}{5} \times \frac{1}{3} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{(i) Exact: } \frac{4}{15} \approx 0.2666666667 \\
+          \textrm{(ii) Chopping: } 0.266 \\
+          \textrm{(iii) Rounding: } 0.266 \\
+          \textrm{(iv) Relative errors: } 0.25\% \quad \textrm{(both)}
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( \left( \frac{1}{3} - \frac{3}{11} \right) + \frac{3}{20} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{(i) Exact: } \frac{139}{660} \approx 0.2106060606 \\
+          \textrm{(ii) Chopping: } 0.211 \quad \textrm{Error: } 0.187\% \\
+          \textrm{(iii) Rounding: } 0.210 \quad \textrm{Error: } 0.288\% \\
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( \left( \frac{1}{3} + \frac{3}{11} \right) - \frac{3}{20} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{(i) Exact: } \frac{301}{660} \approx 0.4560606061 \\
+          \textrm{(ii) Chopping: } 0.455 \quad \textrm{Error: } 0.232\% \\
+          \textrm{(iii) Rounding: } 0.456 \quad \textrm{Error: } 0.0133\% \\
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Perform the following computations using three-digit rounding
+  arithmetic and compute errors.
+  \begin{itemize}
+    \item[a.] \( 133 + 0.921 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 133.921 \\
+          \textrm{Approx: } 134 \\
+          \textrm{Absolute error: } 0.079 \\
+          \textrm{Relative error: } 0.0590\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( 133 - 0.499 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 132.501 \\
+          \textrm{Approx: } 133 \\
+          \textrm{Absolute error: } 0.499 \\
+          \textrm{Relative error: } 0.376\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( (121 - 0.327) - 119 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Approx: } 2.00 \\
+          \textrm{Absolute error: } 0.327 \\
+          \textrm{Relative error: } 19.5\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( (121 - 119) - 0.327 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Approx: } 1.67 \\
+          \textrm{Absolute error: } 0.003 \\
+          \textrm{Relative error: } 0.179\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[e.] \( \frac{\frac{13}{14} - \frac{6}{7}}{2e - 5.4} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 1.9528 \\
+          \textrm{Approx: } 1.80 \\
+          \textrm{Absolute error: } 0.1528 \\
+          \textrm{Relative error: } 7.82\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[f.] \( -10\pi + 6e - \frac{3}{62} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -15.1546 \\
+          \textrm{Approx: } -15.1 \\
+          \textrm{Absolute error: } 0.0546 \\
+          \textrm{Relative error: } 0.360\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[g.] \( \left( \frac{2}{9} \right) \times \left( \frac{9}{7} \right) \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 0.2857 \\
+          \textrm{Approx: } 0.286 \\
+          \textrm{Absolute error: } 0.000286 \\
+          \textrm{Relative error: } 0.0999\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[h.] \( \frac{\pi - \frac{22}{7}}{\frac{1}{17}} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -0.0215 \\
+          \textrm{Approx: } 0.00 \\
+          \textrm{Absolute error: } 0.0215 \\
+          \textrm{Relative error: } 100\%
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Repeat question 3 using three-digit chopping arithmetic.
+  \begin{itemize}
+    \item[a.] \( 133 + 0.921 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 133.921 \\
+          \textrm{Chopped: } 133 \\
+          \textrm{Absolute error: } 0.921 \\
+          \textrm{Relative error: } 0.688\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( 133 - 0.499 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 132.501 \\
+          \textrm{Chopped: } 132 \\
+          \textrm{Absolute error: } 0.501 \\
+          \textrm{Relative error: } 0.378\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( (121 - 0.327) - 119 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Chopped: } 1.00 \\
+          \textrm{Absolute error: } 0.673 \\
+          \textrm{Relative error: } 40.2\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( (121 - 119) - 0.327 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Chopped: } 1.67 \\
+          \textrm{Absolute error: } 0.003 \\
+          \textrm{Relative error: } 0.179\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[e.] \( \frac{\frac{13}{14} - \frac{6}{7}}{2e - 5.4} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 1.9528 \\
+          \textrm{Chopped: } 2.36 \\
+          \textrm{Absolute error: } 0.4072 \\
+          \textrm{Relative error: } 20.8\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[f.] \( -10\pi + 6e - \frac{3}{62} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -15.1546 \\
+          \textrm{Chopped: } -15.1 \\
+          \textrm{Absolute error: } 0.0546 \\
+          \textrm{Relative error: } 0.360\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[g.] \( \left( \frac{2}{9} \right) \times \left( \frac{9}{7} \right) \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 0.2857 \\
+          \textrm{Chopped: } 0.284 \\
+          \textrm{Absolute error: } 0.0017 \\
+          \textrm{Relative error: } 0.599\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[h.] \( \frac{\pi - \frac{22}{7}}{\frac{1}{17}} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -0.0215 \\
+          \textrm{Chopped: } -0.017 \\
+          \textrm{Absolute error: } 0.0045 \\
+          \textrm{Relative error: } 20.9\%
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Repeat question 3 using four-digit rounding arithmetic.
+  \begin{itemize}
+    \item[a.] \( 133 + 0.921 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 133.921 \\
+          \textrm{Approx: } 133.9 \\
+          \textrm{Absolute error: } 0.021 \\
+          \textrm{Relative error: } 0.0157\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( 133 - 0.499 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 132.501 \\
+          \textrm{Approx: } 132.5 \\
+          \textrm{Absolute error: } 0.001 \\
+          \textrm{Relative error: } 0.000755\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( (121 - 0.327) - 119 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Approx: } 1.700 \\
+          \textrm{Absolute error: } 0.027 \\
+          \textrm{Relative error: } 1.614\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( (121 - 119) - 0.327 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Approx: } 1.673 \\
+          \textrm{Absolute error: } 0 \\
+          \textrm{Relative error: } 0\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[e.] \( \frac{\frac{13}{14} - \frac{6}{7}}{2e - 5.4} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 1.9538 \\
+          \textrm{Approx: } 1.932 \\
+          \textrm{Absolute error: } 0.0218 \\
+          \textrm{Relative error: } 1.115\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[f.] \( -10\pi + 6e - \frac{3}{62} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -15.1546 \\
+          \textrm{Approx: } -15.16 \\
+          \textrm{Absolute error: } 0.0054 \\
+          \textrm{Relative error: } 0.0356\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[g.] \( \left( \frac{2}{9} \right) \times \left( \frac{9}{7} \right) \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 0.285714 \\
+          \textrm{Approx: } 0.2857 \\
+          \textrm{Absolute error: } 0.000014 \\
+          \textrm{Relative error: } 0.0049\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[h.] \( \frac{\pi - \frac{22}{7}}{\frac{1}{17}} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -0.0215 \\
+          \textrm{Approx: } -0.01700 \\
+          \textrm{Absolute error: } 0.0045 \\
+          \textrm{Relative error: } 20.93\%
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Repeat question 3 using four-digit chopping arithmetic.
+  \begin{itemize}
+    \item[a.] \( 133 + 0.921 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 133.921 \\
+          \textrm{Chopped: } 133.9 \\
+          \textrm{Absolute error: } 0.021 \\
+          \textrm{Relative error: } 0.0157\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( 133 - 0.499 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 132.501 \\
+          \textrm{Chopped: } 132.5 \\
+          \textrm{Absolute error: } 0.001 \\
+          \textrm{Relative error: } 0.000755\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[c.] \( (121 - 0.327) - 119 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Chopped: } 1.600 \\
+          \textrm{Absolute error: } 0.073 \\
+          \textrm{Relative error: } 4.36\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[d.] \( (121 - 119) - 0.327 \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } 1.673 \\
+          \textrm{Chopped: } 1.673 \\
+          \textrm{Absolute error: } 0 \\
+          \textrm{Relative error: } 0\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[e.] \( \frac{\frac{13}{14} - \frac{6}{7}}{2e - 5.4} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 1.9538 \\
+          \textrm{Chopped: } 1.983 \\
+          \textrm{Absolute error: } 0.0292 \\
+          \textrm{Relative error: } 1.5\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[f.] \( -10\pi + 6e - \frac{3}{62} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -15.1553 \\
+          \textrm{Chopped: } -15.15 \\
+          \textrm{Absolute error: } 0.0053 \\
+          \textrm{Relative error: } 0.035\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[g.] \( \left( \frac{2}{9} \right) \times \left( \frac{9}{7} \right) \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx 0.2857 \\
+          \textrm{Chopped: } 0.2856 \\
+          \textrm{Absolute error: } 0.000114 \\
+          \textrm{Relative error: } 0.04\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[h.] \( \frac{\pi - \frac{22}{7}}{\frac{1}{17}} \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Exact: } \approx -0.0215 \\
+          \textrm{Chopped: } -0.017 \\
+          \textrm{Absolute error: } 0.0045 \\
+          \textrm{Relative error: } 20.9\%
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
+
+\item Compute the absolute error and relative error in approximations
+  of \( \pi \) using the given formulas with the Maclaurin polynomial
+  for \( \arctan x \).
+  \begin{itemize}
+    \item[a.] \( 4\left[\arctan\left(\frac{1}{2}\right) +
+      \arctan\left(\frac{1}{3}\right)\right] \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Approximation: } 4\left[\left(\frac{1}{2} -
+            \frac{1}{24} + \frac{1}{160}\right) + \left(\frac{1}{3} -
+          \frac{1}{81} + \frac{1}{1215}\right)\right] \approx 3.1456 \\
+          \textrm{Absolute error: } |\pi - 3.1456| \approx 0.00398 \\
+          \textrm{Relative error: } \frac{0.00398}{\pi} \approx 0.1268\%
+        \end{array}
+      \]
+      \bigbreak
+
+    \item[b.] \( 14\arctan\left(\frac{1}{5}\right) -
+      4\arctan\left(\frac{1}{239}\right) \)
+
+      \underline{Sol:}\\
+      \[
+        \begin{array}{l}
+          \textrm{Approximation: } 16\left(\frac{1}{5} -
+            \frac{1}{3}\left(\frac{1}{5}\right)^3 +
+          \frac{1}{5}\left(\frac{1}{5}\right)^5\right) -
+          4\left(\frac{1}{239} -
+            \frac{1}{3}\left(\frac{1}{239}\right)^3 +
+          \frac{1}{5}\left(\frac{1}{239}\right)^5\right) \approx 3.1416 \\
+          \textrm{Absolute error: } |\pi - 3.1416| = -2.83757402069e^{-05} \\
+          \textrm{Relative error: } \frac{3.1416}{\pi} = -9.03227863564e^{-06}\%
+        \end{array}
+      \]
+      \bigbreak
+  \end{itemize}
 \end{enumerate}
