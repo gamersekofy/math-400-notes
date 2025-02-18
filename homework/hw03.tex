@@ -1,0 +1,1056 @@
+\begin{center}
+  \section*{Homework 03 - 2.4, 2.3, 2.5}
+  Due Tue 2/18 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{2.4 Newton's Methods}
+
+2, 4, 5, 7a, 9, 11, 12
+
+\begin{enumerate}
+  \item[2.] Let \( f(x) = -x^3 - \cos x \) and \( p_0 = -1 \). Use
+    Newton's method to find \( p_2 \). Could \( p_0 = 0 \) be used
+    for this problem?
+
+    \underline{Sol}:\\
+    \[
+      \begin{array}{l}
+        f(x) = -x^3 - \cos x \\
+        f'(x) = -3x^2 + \sin x \\
+        p_{n+1} = p_n - \frac{f(p_n)}{f'(p_n)} \\
+        p_0 = -1 \\
+        f(-1) = 1 - \cos(1) \\
+        f'(-1) = -3 - \sin(1) \\
+        p_1 = -1 - \frac{1 - \cos(1)}{-3 - \sin(1)} = -1 + \frac{1 -
+        \cos(1)}{3 + \sin(1)} \approx -1 + \frac{1 - 0.5403}{3 +
+        0.8415} \approx -0.8803 \\
+        f(p_1) = f(-0.8803) = -(-0.8803)^3 - \cos(-0.8803) \approx 0.0453 \\
+        f'(p_1) = f'(-0.8803) = -3(-0.8803)^2 + \sin(-0.8803) \approx -3.0961 \\
+        p_2 = p_1 - \frac{f(p_1)}{f'(p_1)} \approx -0.8803 -
+        \frac{0.0453}{-3.0961} \approx -0.8657 \\
+        f'(0) = -3(0)^2 + \sin(0) = 0
+      \end{array}
+    \]
+
+    $\boxed{p_2 \approx -0.8657, \text{ No, } p_0 = 0 \text{ because
+    } f'(0) = 0}$
+
+  \item[4.] Use Newton's method to find solutions accurate to within
+    \( 10^{-5} \) for the following problems.
+    \begin{enumerate}
+      \item[a.] \( 2x \cos 2x - (x - 2)^2 = 0 \), on [2, 3] and [3, 4]
+
+        \underline{Sol}:\\
+        For part a, \( f(x) = 2x \cos 2x - (x - 2)^2 \), \( f'(x) = 2
+        \cos 2x - 4x \sin 2x - 2(x - 2) \)
+
+        Interval [2, 3], \( p_0 = 2.435 \):
+        \[
+          \begin{array}{l}
+            p_0 = 2.435 \\
+            f(p_0) = -0.211617 \\
+            f'(p_0) = 8.859762 \\
+            p_1 = p_0 - \frac{f(p_0)}{f'(p_0)} \approx 2.458918 \\
+            p_2 = 2.458918 - \frac{f(2.458918)}{f'(2.458918)} \approx
+            2.418642 \\
+            p_3 = 2.418642 - \frac{f(2.418642)}{f'(2.418642)} \approx
+            2.464706 \\
+            p_4 = 2.464706 - \frac{f(2.464706)}{f'(2.464706)} \approx
+            2.414600 \\
+          \end{array}
+        \]
+        Restart with \( p_0 = 2.435 \):
+        \[
+          \begin{array}{l}
+            p_0 = 2.435 \\
+            p_1 = 2.43543449 \\
+            p_2 = 2.43543445 \\
+          \end{array}
+        \]
+        Root in [2, 3]: \( \boxed{2.43543} \)
+
+        Interval [3, 4], \( p_0 = 3.877 \):
+        \[
+          \begin{array}{l}
+            p_0 = 3.877 \\
+            f(p_0) = 0.036466 \\
+            f'(p_0) = -18.52455 \\
+            p_1 = 3.877 - \frac{f(p_0)}{f'(p_0)} \approx 3.877597 \\
+            p_2 = 3.877597 - \frac{f(3.877597)}{f'(3.877597)} \approx
+            3.877570 \\
+            p_3 = 3.877570 - \frac{f(3.877570)}{f'(3.877570)} \approx
+            3.877570 \\
+          \end{array}
+        \]
+        Root in [3, 4]: \( \boxed{3.87757} \)
+
+      \item[b.] \( (x - 2)^2 - \ln x = 0 \), on [1, 2] and [e, 4]
+
+        \underline{Sol}:\\
+        For part b, \( f(x) = (x - 2)^2 - \ln x \), \( f'(x) = 2(x -
+        2) - \frac{1}{x} \)
+
+        Interval [1, 2], \( p_0 = 1.5 \):
+        \[
+          \begin{array}{l}
+            p_0 = 1.5 \\
+            f(p_0) = 0.09453489 \\
+            f'(p_0) = -0.33333333 \\
+            p_1 = p_0 - \frac{f(p_0)}{f'(p_0)} \approx 1.7831098 \\
+            |p_1 - p_0| \approx 0.2831098 \\
+            p_2 = p_1 - \frac{f(p_1)}{f'(p_1)} \\
+            f(p_1) = f(1.7831098) \approx -0.052035 \\
+            f'(p_1) = f'(1.7831098) \approx 0.442325 \\
+            p_2 \approx 1.7831098 - \frac{-0.052035}{0.442325}
+            \approx 1.899093 \\
+            |p_2 - p_1| \approx 0.115983 \\
+            p_3 = p_2 - \frac{f(p_2)}{f'(p_2)} \\
+            f(p_2) = f(1.899093) \approx 0.002553 \\
+            f'(p_2) = f'(1.899093) \approx 0.736535 \\
+            p_3 \approx 1.899093 - \frac{0.002553}{0.736535} \approx 1.895623 \\
+            |p_3 - p_2| \approx 0.003470 \\
+            p_4 = p_3 - \frac{f(p_3)}{f'(p_3)} \\
+            f(p_3) = f(1.895623) \approx 0.000006 \\
+            f'(p_3) = f'(1.895623) \approx 0.726156 \\
+            p_4 \approx 1.895623 - \frac{0.000006}{0.726156} \approx 1.895615 \\
+            |p_4 - p_3| \approx 0.000008 \\
+            p_5 = 1.895615 - \frac{f(1.895615)}{f'(1.895615)} \approx
+            1.895615 \\
+            |p_5 - p_4| \approx 0.000000 \\
+          \end{array}
+        \]
+        Root in [1, 2]: \( \boxed{1.89562} \)
+
+        Interval [e, 4], \( p_0 = 3 \):
+        \[
+          \begin{array}{l}
+            p_0 = 3 \\
+            f(p_0) = 0.9013877 \\
+            f'(p_0) = 1.6666666 \\
+            p_1 = p_0 - \frac{f(p_0)}{f'(p_0)} \approx 2.458134 \\
+            |p_1 - p_0| \approx 0.541866 \\
+            p_2 = p_1 - \frac{f(p_1)}{f'(p_1)} \\
+            f(p_1) = f(2.458134) \approx -0.248548 \\
+            f'(p_1) = f'(2.458134) \approx 0.911264 \\
+            p_2 \approx 2.458134 - \frac{-0.248548}{0.911264} \approx
+            2.730853 \\
+            |p_2 - p_1| \approx 0.272719 \\
+            p_3 = p_2 - \frac{f(p_2)}{f'(p_2)} \\
+            f(p_2) = f(2.730853) \approx -0.018187 \\
+            f'(p_2) = f'(2.730853) \approx 1.43225 \\
+            p_3 \approx 2.730853 - \frac{-0.018187}{1.43225} \approx 2.743549 \\
+            |p_3 - p_2| \approx 0.012696 \\
+            p_4 = p_3 - \frac{f(p_3)}{f'(p_3)} \\
+            f(p_3) = f(2.743549) \approx -0.000115 \\
+            f'(p_3) = f'(2.743549) \approx 1.45855 \\
+            p_4 \approx 2.743549 - \frac{-0.000115}{1.45855} \approx 2.743628 \\
+            |p_4 - p_3| \approx 0.000079 \\
+            p_5 = p_4 - \frac{f(p_4)}{f'(p_4)} \\
+            f(p_4) = f(2.743628) \approx -0.00000004 \\
+            f'(p_4) = f'(2.743628) \approx 1.45871 \\
+            p_5 \approx 2.743628 - \frac{-0.00000004}{1.45871}
+            \approx 2.743628 \\
+            |p_5 - p_4| \approx 0.000000 \\
+          \end{array}
+        \]
+        Root in [e, 4]: \( \boxed{2.74363} \)
+
+      \item[c.] \( e^x -3x^2 = 0 \), on [0, 1] and [3, 5]
+
+        \underline{Sol}:\\
+        For part c, \( f(x) = e^x - 3x^2 \), \( f'(x) = e^x - 6x \)
+
+        Interval [0, 1], \( p_0 = 0.5 \):
+        \[
+          \begin{array}{l}
+            p_0 = 0.5 \\
+            p_1 = 0.683939 \\
+            p_2 = 0.697418 \\
+            p_3 = 0.6975 \\
+          \end{array}
+        \]
+        Root in [0, 1]: \( \boxed{0.6975} \)
+
+        Interval [3, 5], \( p_0 = 3 \):
+        \[
+          \begin{array}{l}
+            p_0 = 3 \\
+            p_1 = 2.7666 \\
+            p_2 = 2.7456 \\
+            p_3 = 2.7454 \\
+          \end{array}
+        \]
+        Root in [3, 5]: \( \boxed{2.7454} \)
+
+      \item[d.] \( \sin x - e^{-x} = 0 \), on [0, 1], [3, 4], and [6, 7]
+
+        \underline{Sol}:\\
+        For part d, \( f(x) = \sin x - e^{-x} \), \( f'(x) = \cos x + e^{-x} \)
+
+        Interval [0, 1], \( p_0 = 0 \):
+        \[
+          \begin{array}{l}
+            p_0 = 0 \\
+            p_1 = 0.5 \\
+            p_2 = 0.58612 \\
+            p_3 = 0.58853 \\
+            p_4 = 0.58853 \\
+          \end{array}
+        \]
+        Root in [0, 1]: \( \boxed{0.58853} \)
+
+        Interval [3, 4], \( p_0 = 3 \):
+        \[
+          \begin{array}{l}
+            p_0 = 3 \\
+            p_1 = 3.0993 \\
+            p_2 = 3.0964 \\
+            p_3 = 3.0964 \\
+          \end{array}
+        \]
+        Root in [3, 4]: \( \boxed{3.0964} \)
+
+        Interval [6, 7], \( p_0 = 6 \):
+        \[
+          \begin{array}{l}
+            p_0 = 6 \\
+            p_1 = 6.2857 \\
+            p_2 = 6.2832 \\
+            p_3 = 6.2832 \\
+          \end{array}
+        \]
+        Root in [6, 7]: \( \boxed{6.2832} \)
+
+    \end{enumerate}
+  \item[5.] Use Newton's method to find all four solutions of \( 4x
+    \cos (2x) - (x - 2)^2 = 0 \) in [0, 8] accurate to within \( 10^{-5} \)
+
+    \underline{Sol}:\\
+    Let \( f(x) = 4x \cos (2x) - (x - 2)^2 \) and \( f'(x) = 4 \cos
+    (2x) - 8x \sin (2x) - 2(x - 2) \).
+
+    For root around 2.36, \( p_0 = 1.5 \):
+    \[
+      \begin{array}{l}
+        p_0 = 1.5 \\
+        p_1 = 0.1698 \\
+        p_2 = 1.433 \\
+        p_3 = 2.155 \\
+        p_4 = 2.355 \\
+        p_5 = 2.36315 \\
+        p_6 = 2.36317
+      \end{array}
+    \]
+    Root 1: \( \boxed{2.36317} \)
+
+    For root around 3.81, \( p_0 = 3.5 \):
+    \[
+      \begin{array}{l}
+        p_0 = 3.5 \\
+        p_1 = 3.8233 \\
+        p_2 = 3.81793 \\
+        p_3 = 3.81793 \\
+      \end{array}
+    \]
+    Root 2: \( \boxed{3.81793} \)
+
+    For root around 5.83, \( p_0 = 5.5 \):
+    \[
+      \begin{array}{l}
+        p_0 = 5.5 \\
+        p_1 = 5.8414 \\
+        p_2 = 5.83925 \\
+        p_3 = 5.83925 \\
+      \end{array}
+    \]
+    Root 3: \( \boxed{5.83925} \)
+
+    For root around 6.60, \( p_0 = 7 \):
+    \[
+      \begin{array}{l}
+        p_0 = 7 \\
+        p_1 = 6.6115 \\
+        p_2 = 6.60309 \\
+        p_3 = 6.60308 \\
+      \end{array}
+    \]
+    Root 4: \( \boxed{6.60308} \)
+
+  \item[7.] Use Newton's method to approximate the solutions of the
+    following equations to within \( 10^{-5} \) in the given
+    intervals. In these problems, the convergence will be slower than
+    normal because the zeroes are not simple.
+    \begin{enumerate}
+      \item[a.] \( x^2 - 2xe^{-x} + e^{-2x} = 0 \), on [0, 1]
+
+        \underline{Sol}:\\
+        For \( f(x) = x^2 - 2xe^{-x} + e^{-2x} \), \( f'(x) = 2x +
+        2xe^{-x} - 2e^{-x} - 2e^{-2x} \).
+        Simplified Newton iteration formula: \( p_{n+1} = p_n -
+        \frac{p_n - e^{-p_n}}{2 (1 + e^{-p_n})} \)
+
+        Interval [0, 1], \( p_0 = 0.5 \):
+        \[
+          \begin{array}{l}
+            p_0 = 0.5 \\
+            p_1 = 0.533156 \\
+            p_2 = 0.564948 \\
+            p_3 = 0.567128 \\
+            p_4 = 0.567135 \\
+            p_5 = 0.567135 \\
+            p_6 = 0.567135 \\
+            p_7 = 0.567135 \\
+            p_8 = 0.567135 \\
+            p_9 = 0.567135 \\
+            p_{10} = 0.567135 \\
+            p_{11} = 0.567135 \\
+            p_{12} = 0.567135 \\
+            p_{13} = 0.567135 \\
+          \end{array}
+        \]
+        Root in [0, 1]: \( \boxed{0.567135} \)
+
+    \end{enumerate}
+
+  \item[9.] Use Newton's method to find an approximation to \(
+    \sqrt{3} \) correct to within \( 10^{-4} \), and compare the
+    results to those obtained in Exercise 9 of Sections 2.2 and 2.3.
+
+    \underline{Sol}:\\
+    Let \( f(x) = x^2 - 3 \), \( f'(x) = 2x \).
+    Newton's method iteration: \( p_{n+1} = p_n -
+      \frac{f(p_n)}{f'(p_n)} = p_n - \frac{p_n^2 - 3}{2p_n} =
+    \frac{1}{2} \left( p_n + \frac{3}{p_n} \right) \).
+    Start with \( p_0 = 1.7 \).
+    \[
+      \begin{array}{l}
+        p_0 = 1.7 \\
+        p_1 = \frac{1}{2} \left( 1.7 + \frac{3}{1.7} \right) \approx
+        1.73235294 \\
+        |p_1 - p_0| \approx 0.03235 \\
+        p_2 = \frac{1}{2} \left( p_1 + \frac{3}{p_1} \right) \approx
+        1.73205081 \\
+        |p_2 - p_1| \approx 0.000302 \\
+        p_3 = \frac{1}{2} \left( p_2 + \frac{3}{p_2} \right) \approx
+        1.73205081 \\
+        |p_3 - p_2| \approx 0 \\
+      \end{array}
+    \]
+    We need accuracy within \( 10^{-4} \), so check \( |p_2 - p_1|
+    \approx 0.000302 > 10^{-4} \). Need more iterations.
+    Let's recalculate with higher precision.
+    \[
+      \begin{array}{l}
+        p_0 = 1.7 \\
+        p_1 = 1.7323529411764706 \\
+        p_2 = 1.7320508100147275 \\
+        p_3 = 1.7320508075688772 \\
+        |p_1 - p_0| \approx 0.03235 \\
+        |p_2 - p_1| \approx 0.000302 \\
+        |p_3 - p_2| \approx 2.445 \times 10^{-9} < 10^{-4} \\
+      \end{array}
+    \]
+    So \( p_3 \approx 1.7320508 \) is accurate within \( 10^{-4} \)
+    in 3 iterations.  We need to check if \( |p_2 - p_1| < 10^{-4}
+    \). \( |p_2 - p_1| \approx 0.000302 > 10^{-4} \). So we need \(
+    p_3 \).  Approximation is \( p_3 \approx 1.73205 \).
+
+    Comparison to Exercise 9 of Sections 2.2 and 2.3:
+    Bisection method on [1, 2] to get accuracy \( 10^{-4} \) requires
+    \( n \geq \log_2 \left( \frac{2-1}{10^{-4}} \right) =
+    \log_2(10^4) \approx 14 \) iterations.
+    Newton's method requires only 3 iterations. Newton's method
+    converges much faster than bisection method. False position
+    method is also expected to be slower than Newton's method.
+
+    Approximation to \( \sqrt{3} \) using Newton's method: \(
+    \boxed{1.73205} \) in 3 iterations.
+
+  \item[11.] Newton's method applied to the function \( f(x) = x^2 -2
+    \) with a positive initial approximation \( p_0 \) converges to
+    the only positive solution, \( \sqrt{2} \).
+    \begin{enumerate}
+      \item[a.] Show that Newton's method in this situation assumes
+        the form that the Babylonians used to approximate \( \sqrt{2} \):
+        \[
+          p_{n + 1} = \frac{1}{2} p_n + \frac{1}{p_n}
+        \]
+
+        \underline{Sol}:\\
+        For part a, we have \( f(x) = x^2 - 2 \). Then \( f'(x) = 2x \).
+        Newton's method is given by \( p_{n+1} = p_n -
+        \frac{f(p_n)}{f'(p_n)} \).
+        Substituting \( f(x) \) and \( f'(x) \), we get
+        \[
+          p_{n+1} = p_n - \frac{p_n^2 - 2}{2p_n}
+        \]
+        We can rewrite this as
+        \[
+          p_{n+1} = \frac{2p_n^2}{2p_n} - \frac{p_n^2 - 2}{2p_n} =
+          \frac{2p_n^2 - (p_n^2 - 2)}{2p_n} = \frac{2p_n^2 - p_n^2 +
+          2}{2p_n} = \frac{p_n^2 + 2}{2p_n}
+        \]
+        \[
+          p_{n+1} = \frac{p_n^2}{2p_n} + \frac{2}{2p_n} =
+          \frac{p_n}{2} + \frac{1}{p_n} = \frac{1}{2} p_n + \frac{1}{p_n}
+        \]
+        This is the Babylonian method for approximating \( \sqrt{2} \).
+
+        \boxed{p_{n + 1} = \frac{1}{2} p_n + \frac{1}{p_n}}
+
+      \item[b.] Use the sequence in (a) with \( p_0 = 1 \) to
+        determine an approximation that is accurate to within \( 10^{-5} \)
+
+        \underline{Sol}:\\
+        For part b, we use the iterative formula \( p_{n+1} =
+        \frac{1}{2} p_n + \frac{1}{p_n} \) with \( p_0 = 1 \).
+        \[
+          \begin{array}{l}
+            p_0 = 1 \\
+            p_1 = \frac{1}{2} p_0 + \frac{1}{p_0} = \frac{1}{2} (1) +
+            \frac{1}{1} = 1.5 \\
+            |p_1 - p_0| = |1.5 - 1| = 0.5 \\
+            p_2 = \frac{1}{2} p_1 + \frac{1}{p_1} = \frac{1}{2} (1.5)
+            + \frac{1}{1.5} = 1.4166 \\
+            |p_2 - p_1| = |1.41666 - 1.5| \approx 0.08333 \\
+            p_3 = \frac{1}{2} p_2 + \frac{1}{p_2} = \frac{1}{2}
+            (1.4166) + \frac{1}{1.4166} \approx 1.41421 \\
+            |p_3 - p_2| = |1.41421 - 1.4166| \approx 0.002451 \\
+            p_4 = \frac{1}{2} p_3 + \frac{1}{p_3} = \frac{1}{2}
+            (1.41421) + \frac{1}{1.4142} \approx 1.4142 \\
+            |p_4 - p_3| = |1.41421 - 1.4142| \approx 2.1239 \times
+            10^{-6} < 10^{-5} \\
+          \end{array}
+        \]
+        Since \( |p_4 - p_3| < 10^{-5} \), we can take \( p_4 \) as
+        the approximation.
+
+        \boxed{1.41421}
+    \end{enumerate}
+
+  \item[12.] In Exersise 14 of Section 2.3, we found that for \( f(x)
+    = \tan \pi x - 6 \), the Bisection method on [0, 0.48] converges
+    more quickly than the method of False Position with \( p_0 = 0 \)
+    and \( p_1 = 0.48 \). Also, the Secant method with these values
+    of \( p_0 \) and \( p_1 \) does not give convergence. Apply
+    Newton's method to this problem with (a) \( p_0 = 0 \) and (b) \(
+    p_0 = 0.48 \). (c) Explain the reason for any discrepancies.
+
+    \underline{Sol}:\\
+    For \( f(x) = \tan(\pi x) - 6 \), \( f'(x) = \pi \sec^2(\pi x) \).
+    Newton's method iteration: \( p_{n+1} = p_n - \frac{\tan(\pi p_n)
+    - 6}{\pi \sec^2(\pi p_n)} \)
+
+    (a) \( p_0 = 0 \):
+    \[
+      \begin{array}{l}
+        p_0 = 0 \\
+        p_1 = 0 - \frac{\tan(0) - 6}{\pi \sec^2(0)} = \frac{6}{\pi}
+        \approx 1.90986 \\
+      \end{array}
+    \]
+    Diverges immediately.
+
+    (b) \( p_0 = 0.48 \):
+    \[
+      \begin{array}{l}
+        p_0 = 0.48 \\
+        p_1 \approx 0.482727 \\
+        p_2 \approx 0.481454 \\
+        p_3 \approx 0.48016 \\
+        p_4 \approx 0.47887 \\
+        p_5 \approx 0.47758 \\
+        p_6 \approx 0.47629 \\
+        p_7 \approx 0.47501 \\
+        p_8 \approx 0.47373 \\
+        p_9 \approx 0.47245 \\
+        p_{10} \approx 0.47118 \\
+        \vdots \\
+        p_{90} \approx 0.448614 \\
+        p_{91} \approx 0.448614 \\
+      \end{array}
+    \]
+    Converges slowly to \( \approx 0.448614 \).
+
+    (c) Explanation:
+    For \( p_0 = 0 \), Newton's method diverges as \( p_1 =
+    \frac{6}{\pi} \notin [0, 0.48] \).
+    For \( p_0 = 0.48 \), Newton's method converges very slowly.
+    Bisection method in Exercise 14 of Section 2.3 converged faster
+    than False Position. Secant method diverged.
+    Newton's method convergence depends on \( p_0 \) and \( f'(x) \).
+    Large \( |f'(x)| \) can lead to slow convergence as correction
+    term \( -f(p_n)/f'(p_n) \) becomes small.
+    For \( f(x) = \tan(\pi x) - 6 \) in [0, 0.48], near \( x = 0.5
+    \), \( f'(x) = \pi \sec^2(\pi x) \) is large, potentially slowing
+    convergence even when starting at \( p_0 = 0.48 \). Bisection's
+    consistent interval halving can be more efficient in this case
+    than Newton's or False Position, and Secant is unstable due to
+    derivative behavior and starting points.
+
+    (a) \( p_0 = 0 \): Diverges.
+    (b) \( p_0 = 0.48 \): Converges slowly to \( \boxed{0.44861} \)
+    (approximately after 90 iterations).
+    (c) Explained above.
+\end{enumerate}
+
+\subsection*{2.3 The Secant Method}
+
+3a, 4a, 11, 13, 14, 15
+
+\begin{enumerate}
+  \item[3a.] Use the Secant method to find solutions accurate to
+    within \( 10^{-4} \) for \( x^3 - 2x^2 - 5 = 0 \), on [1, 4].
+
+    \underline{Sol}:\\
+    Let \( f(x) = x^3 - 2x^2 - 5 \).
+    Secant method iteration: \( p_{n+1} = p_n - \frac{f(p_n)(p_n -
+    p_{n-1})}{f(p_n) - f(p_{n-1})} \)
+    Start with \( p_0 = 2, p_1 = 4 \).
+    \[
+      \begin{array}{l}
+        p_0 = 2, f(p_0) = -5 \\
+        p_1 = 4, f(p_1) = 27 \\
+        p_2 = 4 - \frac{f(4)(4-2)}{f(4) - f(2)} = 2.3125 \\
+        f(p_2) = f(2.3125) = -3.33154 \\
+        p_3 = 2.3125 - \frac{f(2.3125)(2.3125 - 4)}{f(2.3125) - f(4)}
+        \approx 2.49784 \\
+        f(p_3) = f(2.49784) \approx -1.8903 \\
+        p_4 = 2.49784 - \frac{f(2.49784)(2.49784 -
+        2.3125)}{f(2.49784) - f(2.3125)} \approx 2.74089 \\
+        f(p_4) = f(2.74089) \approx 0.5792 \\
+        p_5 = 2.74089 - \frac{f(2.74089)(2.74089 -
+        2.49784)}{f(2.74089) - f(2.49784)} \approx 2.6839 \\
+        f(p_5) = f(2.6839) \approx -0.1003 \\
+        p_6 = 2.6839 - \frac{f(2.6839)(2.6839 - 2.74089)}{f(2.6839) -
+        f(2.74089)} \approx 2.69231 \\
+        f(p_6) = f(2.69231) \approx -0.0105 \\
+        p_7 = 2.69231 - \frac{f(2.69231)(2.69231 -
+        2.6839)}{f(2.69231) - f(2.6839)} \approx 2.69133 \\
+        f(p_7) = f(2.69133) \approx -0.00011 \\
+        p_8 = 2.69133 - \frac{f(2.69133)(2.69133 -
+        2.69231)}{f(2.69133) - f(2.69231)} \approx 2.69132 \\
+        |p_8 - p_7| \approx |2.69132 - 2.69133| = 0.00001 < 10^{-4}
+      \end{array}
+    \]
+    Approximation accurate to within \( 10^{-4} \) is \( p_8 \).
+
+    \boxed{2.69132}
+
+  \item[4a.] Use the Secant method to find solutions accurate to
+    within \( 10^{-5} \) for \( 2x \cos 2x - (x - 2)^2 = 0 \), on [2,
+    3] and on [3, 4].
+
+    \underline{Sol}:\\
+    Let \( f(x) = 2x \cos 2x - (x - 2)^2 \).
+    Secant method iteration: \( p_{n+1} = p_n - \frac{f(p_n)(p_n -
+    p_{n-1})}{f(p_n) - f(p_{n-1})} \)
+
+    Interval [2, 3], \( p_0 = 2, p_1 = 3 \):
+    \[
+      \begin{array}{l}
+        p_0 = 2, f(p_0) \approx -2.6131 \\
+        p_1 = 3, f(p_1) \approx 4.7603 \\
+        p_2 \approx 2.3543 \\
+        f(p_2) \approx -0.4873 \\
+        p_3 \approx 2.4289 \\
+        f(p_3) \approx -0.0915 \\
+        p_4 \approx 2.4351 \\
+        f(p_4) \approx -0.0053 \\
+        p_5 \approx 2.4354 \\
+        f(p_5) \approx -0.0001 \\
+        p_6 \approx 2.43543 \\
+        f(p_6) \approx -0.000002 \\
+        p_7 \approx 2.43543 \\
+      \end{array}
+    \]
+    Root in [2, 3]: \( \boxed{2.43543} \)
+
+    Interval [3, 4], \( p_0 = 3, p_1 = 4 \):
+    \[
+      \begin{array}{l}
+        p_0 = 3, f(p_0) \approx 4.7603 \\
+        p_1 = 4, f(p_1) \approx -2.8863 \\
+        p_2 \approx 3.6233 \\
+        f(p_2) \approx 1.2253 \\
+        p_3 \approx 3.8045 \\
+        f(p_3) \approx 0.2095 \\
+        p_4 \approx 3.8304 \\
+        f(p_4) \approx 0.0176 \\
+        p_5 \approx 3.8326 \\
+        f(p_5) \approx 0.0008 \\
+        p_6 \approx 3.83269 \\
+        f(p_6) \approx 0.00003 \\
+        p_7 \approx 3.83269 \\
+      \end{array}
+    \]
+    Root in [3, 4]: \( \boxed{3.83269} \)
+
+  \item[11.] Approximate, to within \( 10^{-4} \), the value of \( x
+    \) that produces the point on the graph of \( y = x^2 \) that is
+    closest to (1, 0). [\textit{Hint:} Minimize \([d(x)]^2\), where
+    \(d(x)\) represents the distance from \( (x, x^2)\) to \( (1, 0) \).]
+
+    \underline{Sol}:\\
+    Let \( f(x) = [d(x)]^2 = (x - 1)^2 + x^4 = x^4 + x^2 - 2x + 1 \).
+    Minimize \( f(x) \) by finding roots of \( f'(x) = 0 \).
+    \( g(x) = f'(x) = 4x^3 + 2x - 2 \)
+    \( g'(x) = 12x^2 + 2 \)
+    Newton's method iteration: \( p_{n+1} = p_n -
+    \frac{g(p_n)}{g'(p_n)} = p_n - \frac{4p_n^3 + 2p_n - 2}{12p_n^2 + 2} \)
+    Start with \( p_0 = 0.6 \).
+    \[
+      \begin{array}{l}
+        p_0 = 0.6 \\
+        p_1 = 0.5898734 \\
+        p_2 = 0.5897549 \\
+        p_3 = 0.5897549 \\
+      \end{array}
+    \]
+    Since \( |p_2 - p_1| \approx 0.0001185 < 10^{-4} \) is not
+    satisfied, we need to check \( |p_3 - p_2| \).
+    \( |p_3 - p_2| = |0.5897549 - 0.5897549| \approx 0 < 10^{-4} \).
+    Let's calculate one more iteration to be safe.
+    \[
+      \begin{array}{l}
+        p_0 = 0.6 \\
+        p_1 = 0.5898734 \\
+        p_2 = 0.5897549297 \\
+        p_3 = 0.5897549165 \\
+      \end{array}
+    \]
+    \( |p_3 - p_2| \approx 1.32 \times 10^{-8} < 10^{-4} \).
+    Thus \( p_2 = 0.5897549 \) is accurate to within \( 10^{-4} \) if
+    we round to 4 decimal places. \( p_2 \approx 0.5898 \).
+
+    \boxed{0.58975}
+
+  \item[13.] The fourth-degree polynomial \( f(x) = 230x^4 + 18x^3 +
+    9x^2 - 221x -9 \) has two real zeros, one in [-1, 0] and the
+    other in [0, 1]. Attempt to approximate these zeros to within \(
+    10^{-6} \) using each method.
+    \begin{enumerate}
+      \item[a.] method of False Position
+
+        \underline{Sol}:\\
+
+        Interval [-1, 0]: \( a_0 = -1, b_0 = 0 \)
+        \[
+          \begin{array}{l|lll}
+            n & a_n & b_n & p_n \\
+            \hline
+            0 & -1 & 0 & - \\
+            1 & -1 & 0 & -0.020361 \\
+            2 & -0.040233 & -0.020361 & -0.040645 \\
+            3 & -0.040645 & -0.020361 & -0.040658 \\
+            4 & -0.040658 & -0.020361 & -0.040659 \\
+            5 & -0.040659 & -0.020361 & -0.040659 \\
+          \end{array}
+        \]
+        Root in [-1, 0]: \( \boxed{-0.040659} \)
+
+        Interval [0, 1]: \( a_0 = 0, b_0 = 1 \)
+        \[
+          \begin{array}{l|lll}
+            n & a_n & b_n & p_n \\
+            \hline
+            0 & 0 & 1 & - \\
+            1 & 0 & 1 & 0.25 \\
+            2 & 0 & 0.25 & 0.254286 \\
+            3 & 0 & 0.254286 & 0.254343 \\
+            4 & 0 & 0.254343 & 0.254344 \\
+          \end{array}
+        \]
+        Root in [0, 1]: \( \boxed{0.254344} \) (False Position stagnates)
+
+
+      \item[b.] Secant method
+
+        Interval [-1, 0]: \( p_0 = -1, p_1 = 0 \)
+        \[
+          \begin{array}{l|lll}
+            n & p_{n-1} & p_n & p_{n+1} \\
+            \hline
+            0 & -1 & 0 & - \\
+            1 & -1 & 0 & -0.020361 \\
+            2 & 0 & -0.020361 & -0.040722 \\
+            3 & -0.020361 & -0.040722 & -0.040659 \\
+            4 & -0.040722 & -0.040659 & -0.040659 \\
+            5 & -0.040659 & -0.040659 & -0.040659 \\
+          \end{array}
+        \]
+        Root in [-1, 0]: \( \boxed{-0.040659} \)
+
+        Interval [0, 1]: \( p_0 = 0, p_1 = 1 \)
+        \[
+          \begin{array}{l|lll}
+            n & p_{n-1} & p_n & p_{n+1} \\
+            \hline
+            0 & 0 & 1 & - \\
+            1 & 0 & 1 & 0.25 \\
+            2 & 1 & 0.25 & 0.254286 \\
+            3 & 0.25 & 0.254286 & 0.95933 \\
+            4 & 0.254286 & 0.95933 & 0.97385 \\
+            5 & 0.95933 & 0.97385 & 0.97455 \\
+            6 & 0.97385 & 0.97455 & 0.97455 \\
+          \end{array}
+        \]
+        Root in [0, 1]: \( \boxed{0.97455} \) (Secant converges)
+    \end{enumerate}
+
+  \item[14.] The function \( f(x) = \tan \pi x - 6 \) has a zero at
+    \( (1/\pi) \arctan 6 \approx 0.447431543 \). Let \( p_0 = 0\) and
+    \( p_1 = 0.48 \) and use 10 iterations of each of the following
+    methods to approximate this root. Which method is most successful and why?
+    \begin{enumerate}
+      \item[a.] Bisection method
+      \item[b.] method of False Position
+      \item[c.] Secant method
+    \end{enumerate}
+
+    \underline{Sol}:\\
+    For \( f(x) = \tan(\pi x) - 6 \), root \( \approx 0.447431543 \).
+    \( p_0 = 0, p_1 = 0.48 \).
+
+    Part a: Bisection method, interval \( [a_0, b_0] = [0, 0.48] \)
+    \[
+      \begin{array}{l|llll}
+        n & a_n & b_n & p_n & f(p_n) \\
+        \hline
+        0 & 0 & 0.48 & - & - \\
+        1 & 0 & 0.48 & 0.24 & -4.453 \\
+        2 & 0.24 & 0.48 & 0.36 & -2.189 \\
+        3 & 0.36 & 0.48 & 0.42 & -0.659 \\
+        4 & 0.42 & 0.48 & 0.45 & 0.759 \\
+        5 & 0.42 & 0.45 & 0.435 & -0.047 \\
+        6 & 0.435 & 0.45 & 0.4425 & 0.354 \\
+        7 & 0.435 & 0.4425 & 0.43875 & 0.152 \\
+        8 & 0.435 & 0.43875 & 0.436875 & 0.052 \\
+        9 & 0.435 & 0.436875 & 0.4359375 & 0.002 \\
+        10 & 0.435 & 0.4359375 & 0.43546875 & -0.022 \\
+      \end{array}
+    \]
+    \( p_{10} \approx 0.43546875 \)
+
+    Part b: False Position method, \( p_0 = 0, p_1 = 0.48 \)
+    \[
+      \begin{array}{l|lll}
+        n & p_{n-1} & p_n & p_{n+1} \\
+        \hline
+        0 & 0 & 0.48 & - \\
+        1 & 0 & 0.48 & 0.091324 \\
+        2 & 0.091324 & 0.48 & 0.16533 \\
+        3 & 0.16533 & 0.48 & 0.22535 \\
+        4 & 0.22535 & 0.48 & 0.27436 \\
+        5 & 0.27436 & 0.48 & 0.31389 \\
+        6 & 0.31389 & 0.48 & 0.34576 \\
+        7 & 0.34576 & 0.48 & 0.37145 \\
+        8 & 0.37145 & 0.48 & 0.39226 \\
+        9 & 0.39226 & 0.48 & 0.4092 \\
+        10 & 0.4092 & 0.48 & 0.4230 \\
+      \end{array}
+    \]
+    \( p_{10} \approx 0.4230 \)
+
+    Part c: Secant method, \( p_0 = 0, p_1 = 0.48 \)
+    \[
+      \begin{array}{l|lll}
+        n & p_{n-1} & p_n & p_{n+1} \\
+        \hline
+        0 & 0 & 0.48 & - \\
+        1 & 0 & 0.48 & 0.48283 \\
+        2 & 0.48 & 0.48283 & 0.44585 \\
+        3 & 0.48283 & 0.44585 & 0.44744 \\
+        4 & 0.44585 & 0.44744 & 0.44743 \\
+        5 & 0.44744 & 0.44743 & 0.44743 \\
+        6 & 0.44743 & 0.44743 & 0.44743 \\
+      \end{array}
+    \]
+    \( p_{10} \approx 0.44743 \) (converged in 4 iterations to given accuracy)
+
+    Most successful: Secant method converges fastest.
+    Bisection method is guaranteed to converge, but slow.
+    False Position is slow due to one endpoint remaining fixed and
+    slow change in interval.
+    Secant method is most successful as it converges quickly to the
+    root with given initial approximations, even though False
+    Position should theoretically be faster than Bisection, in this
+    case, due to function's behavior, False Position is quite slow.
+    Secant method takes advantage of recent two approximations to
+    find next, leading to faster convergence in this problem.
+
+  \item[15.] The sum of two numbers is 20. If each number is added to
+    its square root, the product of the two sums is 155.55. Determine
+    the two numbers to within \( 10^{-4} \).
+
+    \underline{Sol}:\\
+    Let \( f(x) = (x + \sqrt{x})(20 - x + \sqrt{20 - x}) - 155.55 = 0 \)\\
+    \( f'(x) = \left(1 + \frac{1}{2\sqrt{x}}\right)(20 - x + \sqrt{20
+    - x}) + (x + \sqrt{x})\left(-1 - \frac{1}{2\sqrt{20 - x}}\right) \)\\
+    Newton's method \( p_{n+1} = p_n - \frac{f(p_n)}{f'(p_n)} \), \(
+    p_0 = 6.5 \):
+    \[
+      \begin{array}{l}
+        p_0 = 6.5 \\
+        p_1 \approx 6.5127 \\
+        p_2 \approx 6.51466 \\
+        p_3 \approx 6.514758 \\
+      \end{array}
+    \]
+    Let \( x \approx 6.5148 \), \( y = 20 - x \approx 13.4852 \).
+
+    Check: \( (6.5148 + \sqrt{6.5148})(13.4852 + \sqrt{13.4852})
+    \approx 155.55 \)
+
+    \boxed{x \approx 6.5148, y \approx 13.4852}
+
+\end{enumerate}
+
+\subsection*{2.5 Error Analysis and Accelerating Convergence}
+
+1a, 2a, 2c, 3, 5.
+
+\begin{enumerate}
+  \item[1a.] This sequence is linearly convergent. Generate the first
+    five terms of the sequence \( \lbrace q_n \rbrace \) using
+    Aitken's \( \Delta^2 \) method: \( p_0 = 0.5, p_n = (2 - e^{p_n
+    -1} + p^2_{n-1})/3 \), for \( n \ge 1 \).
+
+    \underline{Sol}:\\
+    Given \( p_0 = 0.5 \), \( p_n = (2 - e^{p_{n-1}} + p^2_{n-1})/3
+    \) for \( n \ge 1 \).
+    First six terms of \( \{ p_n \} \):
+    \[
+      \begin{array}{l}
+        p_0 = 0.5 \\
+        p_1 \approx 0.2004266667 \\
+        p_2 \approx 0.2727492667 \\
+        p_3 \approx 0.2535640667 \\
+        p_4 \approx 0.2585616667 \\
+        p_5 \approx 0.257262 \\
+        p_6 \approx 0.2576003333 \\
+      \end{array}
+    \]
+    Aitken's \( \Delta^2 \) method: \( q_n = p_n - \frac{(p_{n+1} -
+    p_n)^2}{(p_{n+2} - 2p_{n+1} + p_n)} \)
+    \[
+      \begin{array}{l}
+        q_0 \approx p_0 - \frac{(p_1 - p_0)^2}{(p_2 - 2p_1 + p_0)}
+        \approx 0.25869 \\
+        q_1 \approx p_1 - \frac{(p_2 - p_1)^2}{(p_3 - 2p_2 + p_1)}
+        \approx 0.25760 \\
+        q_2 \approx p_2 - \frac{(p_3 - p_2)^2}{(p_4 - 2p_3 + p_2)}
+        \approx 0.25753 \\
+        q_3 \approx p_3 - \frac{(p_4 - p_3)^2}{(p_5 - 2p_4 + p_3)}
+        \approx 0.25753 \\
+        q_4 \approx p_4 - \frac{(p_5 - p_4)^2}{(p_6 - 2p_5 + p_4)}
+        \approx 0.25753 \\
+      \end{array}
+    \]
+
+    \boxed{q_0 = 0.25869, q_1 = 0.25760, q_2 = 0.25753, q_3 =
+    0.25753, q_4 = 0.25753}
+
+  \item[2a.] Newton's method does not converge quadratically for
+    these problems. Accelerate the convergence using Aitken's \(
+    \Delta^2 \) method. Iterate until \( |q_n - q_{n-1}| < 10^{-4} \).
+    \begin{enumerate}
+      \item[a.] \( x^2 - 2xe^{-x} + e^{-2x} = 0 \), [0, 1]
+
+        \underline{Sol}:\\
+        Newton's method sequence \( \{p_n\} \) with \( p_0 = 0.5 \):
+        \[
+          \begin{array}{l}
+            p_0 = 0.5 \\
+            p_1 \approx 0.533338 \\
+            p_2 \approx 0.545753 \\
+            p_3 \approx 0.551693 \\
+          \end{array}
+        \]
+        Aitken's \( \Delta^2 \) method: \( q_n = p_n - \frac{(p_{n+1}
+        - p_n)^2}{(p_{n+2} - 2p_{n+1} + p_n)} \)
+        \[
+          \begin{array}{l}
+            q_0 = p_0 - \frac{(p_1 - p_0)^2}{(p_2 - 2p_1 + p_0)}
+            \approx 0.557521 \\
+            q_1 = p_1 - \frac{(p_2 - p_1)^2}{(p_3 - 2p_2 + p_1)}
+            \approx 0.557528 \\
+          \end{array}
+        \]
+        \( |q_1 - q_0| \approx 0.000007 < 10^{-4} \). Stop at \( q_1 \).
+        Root for part a: \( \boxed{0.55753} \)
+
+      \item[c.] \( x^3 - 3x^2 (2^{-x}) + 3x (4^{-x}) - 8^{-x} = 0 \), [0, 1]
+
+        Newton's method sequence \( \{p_n\} \) with \( p_0 = 0.5 \):
+        \[
+          \begin{array}{l}
+            p_0 = 0.5 \\
+            p_1 \approx 0.453476 \\
+            p_2 \approx 0.447235 \\
+            p_3 \approx 0.446729 \\
+          \end{array}
+        \]
+        Aitken's \( \Delta^2 \) method: \( q_n = p_n - \frac{(p_{n+1}
+        - p_n)^2}{(p_{n+2} - 2p_{n+1} + p_n)} \)
+        \[
+          \begin{array}{l}
+            q_0 = p_0 - \frac{(p_1 - p_0)^2}{(p_2 - 2p_1 + p_0)}
+            \approx 0.446734 \\
+            q_1 = p_1 - \frac{(p_2 - p_1)^2}{(p_3 - 2p_2 + p_1)}
+            \approx 0.446715 \\
+            q_2 = p_2 - \frac{(p_3 - p_2)^2}{(p_4 - 2p_3 + p_2)},
+            \text{ need } p_4 \approx 0.446715 \\
+          \end{array}
+        \]
+        \( |q_1 - q_0| \approx 0.000019 > 10^{-4} \). Need more iterations.
+        Since \( q_1 \) and \( q_2 \) are very close to \( q_1
+        \approx 0.446715 \), we approximate root as \( q_1 \).
+
+        Root for part c: \( \boxed{0.44672} \)
+    \end{enumerate}
+
+  \item[3.] Consider the function \( f(x) = e^{6x} + 3 (\ln 2)^2
+    e^{2x} - (\ln 8)e^{4x} - (\ln 2)^3 \). Use Newton's method with
+    \( p_0 = 0 \) to approximate a zero of \( f \). Generate terms
+    until \( |p_{n+1} - p_n| < 0.0002 \). Construct Aitken's \(
+    \Delta^2 \) sequence \( \lbrace q_n \rbrace \). Is the convergence improved?
+
+    \underline{Sol}:\\
+    Let \( f(x) = e^{6x} + 3 (\ln 2)^2 e^{2x} - (\ln 8)e^{4x} - (\ln
+    2)^3 \) and \( f'(x) = 6e^{6x} + 6 (\ln 2)^2 e^{2x} - 4 (\ln 8)e^{4x} \).
+    Newton's method iteration: \( p_{n+1} = p_n -
+    \frac{f(p_n)}{f'(p_n)} \). Start with \( p_0 = 0 \).
+    Let \( L2 = \ln 2 \) and \( L8 = \ln 8 \). Then \( f(x) = e^{6x}
+    + 3 L2^2 e^{2x} - L8 e^{4x} - L2^3 \) and \( f'(x) = 6e^{6x} + 6
+    L2^2 e^{2x} - 4 L8 e^{4x} \).
+    \[
+      \begin{array}{l}
+        p_0 = 0 \\
+        f(p_0) = 1 + 3 (\ln 2)^2 - \ln 8 - (\ln 2)^3 \\
+        f'(p_0) = 6 + 6 (\ln 2)^2 - 4 \ln 8 \\
+        p_1 = p_0 - \frac{f(p_0)}{f'(p_0)} = - \frac{1 + 3 (\ln 2)^2
+        - \ln 8 - (\ln 2)^3}{6 + 6 (\ln 2)^2 - 4 \ln 8} \approx
+        -2.06265 \times 10^{-7} \\
+        |p_1 - p_0| = |p_1| \approx 2.06265 \times 10^{-7} < 0.0002 \\
+      \end{array}
+    \]
+    Since \( |p_1 - p_0| < 0.0002 \), we stop at \( p_1 \).  \( p_1
+    \approx -2.06265 \times 10^{-7} \).
+
+    Construct Aitken's \( \Delta^2 \) sequence \( \{ q_n \} \). We
+    need \( p_2 \) for \( q_0 \).
+    \[
+      \begin{array}{l}
+        p_2 = p_1 - \frac{f(p_1)}{f'(p_1)} \\
+      \end{array}
+    \]
+    Since \( p_1 \) is very close to 0 and \( f(0) \approx 0 \), \(
+    p_2 \) will be very close to \( p_1 \).  For practical purposes,
+    \( p_1 \approx p_2 \approx ... \approx 0 \).
+
+    Aitken's \( \Delta^2 \) method: \( q_n = p_n - \frac{(p_{n+1} -
+    p_n)^2}{(p_{n+2} - 2p_{n+1} + p_n)} \)
+    \[
+      q_0 = p_0 - \frac{(p_1 - p_0)^2}{(p_2 - 2p_1 + p_0)} = 0 -
+      \frac{(p_1 - 0)^2}{(p_2 - 2p_1 + 0)} = - \frac{p_1^2}{p_2 - 2p_1}
+    \]
+    Since \( p_1 \approx p_2 \approx -2.06265 \times 10^{-7} \),
+    let's use \( p_2 \approx p_1 \).
+    \[
+      q_0 \approx - \frac{p_1^2}{p_1 - 2p_1} = - \frac{p_1^2}{-p_1} =
+      p_1 \approx -2.06265 \times 10^{-7}
+    \]
+    In this case, Aitken's method does not significantly improve the
+    first approximation, as Newton's method already converges very
+    rapidly from \( p_0 = 0 \). The convergence is already very fast,
+    so acceleration by Aitken's method is not visibly significant in
+    the first term \( q_0 \).
+
+    Approximation of zero using Newton's method: \( \boxed{-2.06265
+    \times 10^{-7}} \) Convergence is already very fast; Aitken's \(
+    \Delta^2 \) method does not show significant improvement in the first term.
+
+  \item[5.] (i) Show that the following sequences \( \lbrace p_n
+    \rbrace \) converge linearly to \( p = 0 \). (ii) How large must
+    \(n\) be before \( |p_n - p| \le 5 \times 10^{-2} \)? (iii) Use
+    Aitken's \(\Delta^2\) method to generate a sequence \(
+    lbrace q_n \rbrace\) until \( |q_n - p| \le 5 \times 10^{-2} \).
+    \begin{enumerate}
+      \item[a.] \( p_n = \frac{1}{n} \), for \( n \ge 1 \)
+
+        \underline{Sol}:\\
+
+        (i) Linear convergence:
+        \[
+          \lim_{n \to \infty} \frac{|p_{n+1} - 0|}{|p_n - 0|} =
+          \lim_{n \to \infty} \frac{1/(n+1)}{1/n} = \lim_{n \to
+          \infty} \frac{n}{n+1} = 1
+        \]
+        Linear convergence to \( p=0 \).
+
+        (ii) Find \( n \) for \( |p_n - 0| \le 5 \times 10^{-2} \):
+        \[
+          \frac{1}{n} \le 0.05 = \frac{1}{20} \implies n \ge 20
+        \]
+        \( n = 20 \) needed.
+
+        (iii) Aitken's \( \Delta^2 \) method: \( q_n = \frac{1}{2(n+1)} \)
+        \[
+          \begin{array}{l}
+            q_1 = \frac{1}{2(1+1)} = \frac{1}{4} = 0.25 \\
+            q_2 = \frac{1}{2(2+1)} = \frac{1}{6} \approx 0.16667 \\
+            q_3 = \frac{1}{2(3+1)} = \frac{1}{8} = 0.125 \\
+            q_4 = \frac{1}{2(4+1)} = \frac{1}{10} = 0.1 \\
+            q_5 = \frac{1}{2(5+1)} = \frac{1}{12} \approx 0.08333 \\
+            q_6 = \frac{1}{2(6+1)} = \frac{1}{14} \approx 0.07143 \\
+            q_7 = \frac{1}{2(7+1)} = \frac{1}{16} = 0.0625 \\
+            q_8 = \frac{1}{2(8+1)} = \frac{1}{18} \approx 0.05556 \\
+            q_9 = \frac{1}{2(9+1)} = \frac{1}{20} = 0.05 \\
+            q_{10} = \frac{1}{2(10+1)} = \frac{1}{22} \approx 0.04545 < 0.05 \\
+          \end{array}
+        \]
+        Need \( q_{10} \) for \( |q_n| \le 5 \times 10^{-2} \).
+
+
+      \item[b.] \( p_n = \frac{1}{n^2} \), for \( n \ge 1 \)
+
+        (i) Linear convergence:
+        \[
+          \lim_{n \to \infty} \frac{|p_{n+1} - 0|}{|p_n - 0|} =
+          \lim_{n \to \infty} \frac{1/(n+1)^2}{1/n^2} = \lim_{n \to
+          \infty} \left(\frac{n}{n+1}\right)^2 = 1
+        \]
+        Linear convergence to \( p=0 \).
+
+        (ii) Find \( n \) for \( |p_n - 0| \le 5 \times 10^{-2} \):
+        \[
+          \frac{1}{n^2} \le 0.05 = \frac{1}{20} \implies n^2 \ge 20
+          \implies n \ge \sqrt{20} \approx 4.47
+        \]
+        \( n = 5 \) needed.
+
+        (iii) Aitken's \( \Delta^2 \) method: \( q_1 = p_1 -
+        \frac{(p_2 - p_1)^2}{(p_3 - 2p_2 + p_1)} \)
+        \[
+          \begin{array}{l}
+            p_1 = 1, p_2 = 0.25, p_3 \approx 0.1111 \\
+            q_1 \approx 0.0795 \\
+            p_2 = 0.25, p_3 \approx 0.1111, p_4 = 1/16 = 0.0625 \\
+            q_2 = 0.25 - \frac{(0.1111 - 0.25)^2}{(0.0625 - 2 \times
+            0.1111 + 0.25)} \approx 0.03635 \\
+          \end{array}
+        \]
+        \( |q_2| \approx 0.03635 < 0.05 \). Need \( q_2 \) for \(
+        |q_n| \le 5 \times 10^{-2} \).
+
+        \textbf{Answers:}
+
+        Part a: (i) Linear, (ii) \( n = 20 \), (iii) \( q_{10}
+        \approx 0.04545 \)
+
+        Part b: (i) Linear, (ii) \( n = 5 \), (iii) \( q_2 \approx 0.03635 \)
+
+    \end{enumerate}
+\end{enumerate}
