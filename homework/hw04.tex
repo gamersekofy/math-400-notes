@@ -1,0 +1,231 @@
+\begin{center}
+  \section*{Homework 04 - 2.6, 3.2}
+  Due Tue 2/26 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{2.6 Muller's Method}
+
+6, 9, 10.
+
+\begin{enumerate}
+  \item[6.] \( P(x) = 10 x^3 - 8.3 x^2 + 2.295x - 0.21141 = 0 \) has
+    a root \( x = 0.29 \).
+    \begin{enumerate}
+      \item[a.] Use Newton's method with \( p_0 = 0.28 \) to attempt
+        to find this root.
+
+        \underline{Sol}:\\
+        \[
+          \begin{array}{l}
+            p_0 = 0.28: \\
+            P(0.28) \approx -0.00001, \quad P'(0.28) \approx -0.001 \\
+            p_1 = 0.28 - \dfrac{-0.00001}{-0.001} = 0.27 \quad
+            \Rightarrow \boxed{0.27}
+          \end{array}
+        \]
+
+      \item[b.] Use Muller's method with \( p_0 = 0.275 \), \( p_1 =
+        0.28 \), and \( p_2 = 0.285 \) to attempt to find this root.
+
+        \underline{Sol}:\\
+        \[
+          \begin{array}{l}
+            h_0 = 0.005, \, h_1 = 0.005, \, \delta_0 =
+            \dfrac{P(0.28)-P(0.275)}{0.005} \\ \approx -0.00125, \,
+            \delta_1 = \dfrac{P(0.285)-P(0.28)}{0.005} \approx -0.00025 \\
+            a = \dfrac{\delta_1 - \delta_0}{h_1 + h_0} = 0.1, \quad b
+            = a h_1 + \delta_1 = 0.00025, \quad c = P(0.285) \approx
+            -0.00001125 \\
+            x_3 = 0.285 - \dfrac{2c}{b + \sqrt{b^2 - 4ac}} \approx
+            0.2943 \quad \Rightarrow \boxed{0.29}
+          \end{array}
+        \]
+
+      \item[c.] Explain any discrepencies in (a) and (b).
+
+        \underline{Sol}:\\
+        \textbf{c.} Newton's method converges to a double root at
+        0.27; Muller's method targets the simple root at 0.29.
+    \end{enumerate}
+
+  \item[9.] Use each of the following methods to find a solution
+    accurate to within \( 10^{-4} \) for the problem \( 600x^4 -
+    550x^3 + 200x^2 - 20x - 1 = 0 \), for \( 0.1 \le x \le 1 \).
+
+    \underline{Sol a.} (Bisection Method):
+    \[
+      \begin{array}{l}
+        \text{Initial interval: } [0.2, 0.3] \\
+        \text{Iterations (10 steps):} \\
+        \hline
+        p_{10} \approx 0.2324 \quad \Rightarrow \boxed{0.2324}
+      \end{array}
+    \]
+
+    \underline{Sol b.} (Newton's Method):
+    \[
+      \begin{array}{l}
+        p_0 = 0.25, \quad f'(x) = 2400x^3 - 1650x^2 + 400x - 20 \\
+        p_1 = 0.2326, \quad p_2 = 0.2327 \quad \Rightarrow \boxed{0.2327}
+      \end{array}
+    \]
+
+    \underline{Sol c.} (Secant Method):
+    \[
+      \begin{array}{l}
+        p_0 = 0.2, \, p_1 = 0.3 \\
+        p_4 \approx 0.2323 \quad \Rightarrow \boxed{0.2323}
+      \end{array}
+    \]
+
+    \underline{Sol d.} (False Position):
+    \[
+      \begin{array}{l}
+        \text{Initial: } [0.2, 0.3] \\
+        p_3 \approx 0.2323 \quad \Rightarrow \boxed{0.2323}
+      \end{array}
+    \]
+
+    \underline{Sol e.} (Muller's Method):
+    \[
+      \begin{array}{l}
+        p_0 = 0.2, \, p_1 = 0.25, \, p_2 = 0.3 \\
+        p_3 \approx 0.2325 \quad \Rightarrow \boxed{0.2325}
+      \end{array}
+    \]
+
+  \item[10.] Two ladders crosscross an alley of width \textit{W}.
+    Each ladder reaches from the base of one wall to some point on
+    the opposite wall. The ladders cross at a height \textit{H} above
+    the pavement. Find \textit{W} given that the lengths of the
+    ladders are \( x_1 = 20 \) ft and \( x_2  = 30 \) ft and that \(
+    H = 8 \) ft.
+
+    \underline{Sol}:
+    \[
+      \frac{8}{\sqrt{400 - W^2}} + \frac{8}{\sqrt{900 - W^2}} = 1
+      W \approx \sqrt{262.855} \approx 16.21 \quad \Rightarrow
+      \boxed{16.22 \, \text{ft}}
+    \]
+
+\end{enumerate}
+
+\subsection*{3.2 Lagrange Polynomials}
+
+1c, 2, 3b, 7c.
+
+\begin{enumerate}
+  \item[1c.] For the function \( f(x) = \ln (x + 1) \), let \( x_0 =
+    0, x_1 = 0.6 \textrm{ and } x_2 = 0.9 \). Construct the Lagrange
+    interpolating polynomials of degree (i) at most 1 and (ii) at
+    most 2 to approximate \( f(0.45) \), and find the actual error.
+
+    \underline{Sol (i)}:
+    \[
+      P_1(0.45) = \frac{0.45 - 0.6}{0 - 0.6} \ln(1) + \frac{0.45 -
+      0}{0.6 - 0} \ln(1.6) \approx 0.3525
+    \]
+    \[
+      \text{Error} = |\ln(1.45) - 0.3525| \approx \boxed{0.01906}
+    \]
+
+    \underline{Sol (ii)}:
+    \[
+      \begin{array}{l}
+        P_2(0.45) = \frac{(0.45-0.6)(0.45-0.9)}{(0-0.6)(0-0.9)}
+        \ln(1) + \frac{(0.45-0)(0.45-0.9)}{(0.6-0)(0.6-0.9)} \ln(1.6)
+        + \\ \frac{(0.45-0)(0.45-0.6)}{(0.9-0)(0.9-0.6)} \ln(1.9) \approx 0.3683
+      \end{array}
+    \]
+    \[
+      \text{Error} = |\ln(1.45) - 0.3683| \approx \boxed{0.00327}
+    \]
+
+  \item[2.] Use the Lagrange polynomial error formula to find an
+    error bound for the approximations in Exercise 1.
+
+    \underline{Sol}:
+    Linear (n=1):
+    \[
+      \text{Bound } = \frac{\max |f''(\xi)|}{2} \cdot
+      |(0.45-0)(0.45-0.6)|, \quad \xi \in [0, 0.6]
+    \]
+    \[
+      f''(x) = -\frac{1}{(x+1)^2} \Rightarrow \max |f''(\xi)| = 1
+    \]
+    \[
+      \text{Bound } = \frac{1}{2} \cdot |0.45 \cdot (-0.15)| = \boxed{0.03375}
+    \]
+
+    Quadratic (n=2):
+    \[
+      \text{Bound } = \frac{\max |f'''(\xi)|}{6} \cdot
+      |(0.45-0)(0.45-0.6)(0.45-0.9)|, \quad \xi \in [0, 0.9]
+    \]
+    \[
+      f'''(x) = \frac{2}{(x+1)^3} \Rightarrow \max |f'''(\xi)| = 2
+    \]
+    \[
+      \text{Bound } = \frac{2}{6} \cdot |0.45 \cdot (-0.15) \cdot
+      (-0.45)| = \boxed{0.010125}
+    \]
+
+  \item[3b.] Use the appropriate Lagrange interpolating polynomials
+    of degrees 1, 2, and 3 to approximate \( f(- \frac{1}{3}) \) if
+    \( f(-0.75) = -0.07181250, f(0.5) = -0.02475000, f(-0.25) =
+    0.33493750, f(0) = 1.10100000 \).
+
+    \underline{Sol (i)}:
+    Using \( x_0 = -0.5 \), \( x_1 = -0.25 \):
+    \[
+      P_1\left(-\tfrac{1}{3}\right) = \tfrac{(-\tfrac{1}{3} +
+      0.25)}{-0.25} (-0.02475) + \tfrac{(-\tfrac{1}{3} + 0.5)}{0.25}
+      (0.3349375) = \boxed{0.21504167}
+    \]
+
+    \underline{Sol (ii)}:
+    Adding \( x_2 = 0 \):
+    \[
+      \begin{array}{l}
+        P_2\left(-\tfrac{1}{3}\right) = \tfrac{(-\tfrac{1}{3} +
+        0.25)(-\tfrac{1}{3})}{0.125} (-0.02475)\\ +
+        \tfrac{(-\tfrac{1}{3} + 0.5)(-\tfrac{1}{3})}{-0.0625}
+        (0.3349375) + \tfrac{(-\tfrac{1}{3} + 0.5)(-\tfrac{1}{3} +
+        0.25)}{0.125} (1.101) = \boxed{0.16988889}
+      \end{array}
+    \]
+
+    \underline{Sol (iii)}:
+    Including \( x_3 = -0.75 \):
+    \[
+      P_3\left(-\tfrac{1}{3}\right) = \sum_{k=0}^3 f(x_k)
+      \prod_{\substack{j=0 \\ j \neq k}}^3 \tfrac{-\tfrac{1}{3} -
+      x_j}{x_k - x_j} = \boxed{0.17451852}
+    \]
+
+  \item[7c.] The data for Exercise 3 were generated using the
+    function \( f(x) = x \cos x - 2x^2 + 3x - 1 \). Use the error
+    formula to find a bound for the error and compare the bound to
+    the actual error for the cases \( n = 1 \) and \( n = 2 \).
+
+    \underline{Sol (i)}:
+    Error bound for \( n=1 \):
+    \[
+      \frac{\max |f''(\xi)|}{2} \left|\left(-\tfrac{1}{3} +
+      0.5\right)\left(-\tfrac{1}{3} + 0.25\right)\right| =
+      \boxed{6.0971 \times 10^{-3}}
+    \]
+    Actual error: \( \boxed{5.9210 \times 10^{-3}} \).
+
+    \underline{Sol (ii)}:
+    Error bound for \( n=2 \):
+    \[
+      \frac{\max |f'''(\xi)|}{6} \left|\left(-\tfrac{1}{3} +
+      0.5\right)\left(-\tfrac{1}{3} +
+      0.25\right)\left(-\tfrac{1}{3}\right)\right| = \boxed{1.8128
+      \times 10^{-4}}
+    \]
+    Actual error: \( \boxed{1.7455 \times 10^{-4}} \).
+
+\end{enumerate}
