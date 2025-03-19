@@ -1,0 +1,80 @@
+\begin{center}
+  \section*{Homework 06 - 3.5}
+  Due Wed 3/11 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{3.5 Spline Interpolation}
+
+1 (by hand), 7, 17, 11 (optional)
+
+\begin{enumerate}
+  \item[1.] Determine the natural cubic spline \textit{S} that
+    interpolates the data \(f(0) = 0, f(1) = 1\), and \(f(2) = 2\).
+
+    \underline{Sol}:\\
+
+    \[
+      \begin{array}{l}
+        \text{For } x \in [0, 1]: \ S_0(x) = x, \\
+        \text{For } x \in [1, 2]: \ S_1(x) = x. \\
+        \boxed{\text{Thus, } S(x) = x \ \text{for all } x \in [0, 2].}
+      \end{array}
+    \]
+
+  \item[7.]
+
+    \underline{Sol}:\\
+
+    \[
+      \begin{array}{l}
+        \text{a. Data: } x_i = 0, 0.25, 0.5, 0.75, 1.0,\; f(x_i) = 1,
+        \frac{\sqrt{2}}{2}, 0, -\frac{\sqrt{2}}{2}, -1. \\[6pt]
+        \text{Natural spline: } M_0 = M_4 = 0,\; h = 0.25. \\[6pt]
+        \text{Tridiagonal system:} \\
+        \begin{cases}
+          \frac{2}{3}M_1 + \frac{1}{6}M_2 = 16(\sqrt{2} - 1) \\
+          \frac{1}{6}M_1 + \frac{2}{3}M_2 + \frac{1}{6}M_3 = 0 \\
+          \frac{1}{6}M_2 + \frac{2}{3}M_3 = -16(\sqrt{2} - 1)
+        \end{cases} \Rightarrow M_1 = 24(\sqrt{2} - 1),\; M_2 = 0,\;
+        M_3 = -24(\sqrt{2} - 1). \\[6pt]
+        S_j(x) = a_j + b_j(x - x_j) + c_j(x - x_j)^2 + d_j(x - x_j)^3
+        \text{ for each interval.} \\[6pt]
+        \boxed{S(x) \text{ defined piecewise via } M_i} \\[12pt]
+
+        \text{b. } \int_0^1 S(x)dx = \sum_{j=0}^3
+        \int_{x_j}^{x_{j+1}} S_j(x)dx = 0. \\[6pt]
+        \boxed{0} \\[12pt]
+
+        \text{c. At } x = 0.5: \\
+        f'(0.5) \approx S'_1(0.5) = -(\sqrt{2} + 1) \approx
+        -2.414,\quad f''(0.5) = M_2 = 0. \\[6pt]
+        \boxed{f'(0.5) \approx -(\sqrt{2} + 1),\; f''(0.5) = 0}
+      \end{array}
+    \]
+
+  \item[17.] The data in the following table give the population of
+    the United States for the years 1960 to 2010.
+      \underline{Sol}:\\
+
+\[
+\begin{array}{l}
+   \text{a. Natural cubic spline setup (years } x_i = 1960, 1970, \dots, 2010\text{):} \\
+   h = 10,\; M_0 = M_5 = 0. \\
+   \text{Tridiagonal system:} \\
+   \begin{cases} 
+   4M_1 + M_2 = -38.34 \\
+   M_1 + 4M_2 + M_3 = -8.94 \\
+   M_2 + 4M_3 + M_4 = 523.08 \\
+   M_3 + 4M_4 = -390.3 
+   \end{cases} \Rightarrow M_1 \approx 2.25,\; M_2 \approx -47.33,\; M_3 \approx 178.13,\; M_4 \approx -142.11. \\[6pt]
+   \text{Predictions via spline segments:} \\
+   S_0(1950) = 179323 + 2394.15(-10) + 0.0375(-10)^3 \approx \boxed{155,\!344} \text{ (thousands)} \\
+   S_1(1975) = 203302 + 2395.39(5) + 1.12(25) - 0.826(125) \approx \boxed{215,\!204} \\
+   S_4(2020) = 307746 + 3104.10(10) - 71.05(100) + 2.368(1000) \approx \boxed{334,\!050} \\[12pt]
+   
+   \text{b. Comparison: Spline interpolation preferred over polynomial for stability.} \\
+   \text{Extrapolation (1950, 2020) unreliable; spline minimizes curvature.}
+\end{array}
+\]
+\end{enumerate}

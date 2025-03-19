@@ -1,0 +1,218 @@
+\begin{center}
+  \section*{Homework 05 - 3.3, 3.4}
+  Due Wed 3/05 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{3.3 Divided Differences}
+
+1b, 4
+
+\begin{enumerate}
+  \item[1.] Use Newton's interpolatory divided-difference formula to
+    construct interpolating polynomials of degrees 1, 2, and 3 for
+    the following data. Approximate the specified value using each of
+    the polynomials.
+    \begin{enumerate}
+      \item[b.]
+        Construct interpolating polynomials of degrees 1, 2, and 3 for:
+        \[
+          \begin{array}{c|cccc}
+            x & 0.6 & 0.7 & 0.8 & 1.0 \\
+            \hline
+            f(x) & -0.17694460 & 0.01375227 & 0.22363362 & 0.65809197 \\
+          \end{array}
+        \]
+        Approximate \( f(0.9) \).
+
+        \underline{Sol}:\\
+
+        Divided difference table:
+        \[
+          \begin{array}{c|cccc}
+            0.6 & -0.17694460 & 1.9069687 & 0.959224 & -1.78574125 \\
+            0.7 & 0.01375227 & 2.0988135 & 0.2449275 & \\
+            0.8 & 0.22363362 & 2.17229175 & & \\
+            1.0 & 0.65809197 & & & \\
+          \end{array}
+        \]
+
+        \underline{Construction}:
+        \[
+          \begin{aligned}
+            P_1(x) &= f[0.6] + f[0.6,0.7](x-0.6) \\
+            P_2(x) &= P_1(x) + f[0.6,0.7,0.8](x-0.6)(x-0.7) \\
+            P_3(x) &= P_2(x) + f[0.6,0.7,0.8,1.0](x-0.6)(x-0.7)(x-0.8)
+          \end{aligned}
+        \]
+
+        Evaluations at \( x = 0.9 \):
+        \[
+          \boxed{
+            \begin{aligned}
+              P_1(0.9) &= -0.17694460 + 1.9069687(0.3) = 0.395146 \\
+              P_2(0.9) &= 0.395146 + 0.959224(0.3)(0.2) = 0.4526995 \\
+              P_3(0.9) &= 0.4526995 - 1.78574125(0.3)(0.2)(0.1) = 0.4419850
+            \end{aligned}
+          }
+        \]
+    \end{enumerate}
+
+  \item[4.]
+    \begin{enumerate}
+      \item[a.] Construct the fourth-degree interpolating polynomial for the
+        unequally spaced points:
+
+        \[
+          \begin{array}{c|ccccc}
+            x & 0.0 & 0.1 & 0.3 & 0.6 & 1.0 \\
+            \hline
+            f(x) & -6.00000 & -5.89483 & -5.65014 & -5.17788 & -4.28172 \\
+          \end{array}
+        \]
+
+        Divided difference table:
+        \[
+          \begin{array}{c|ccccc}
+            0.0 & -6.00000 & 1.0517 & 0.5725 & 0.215 & 0.06301587 \\
+            0.1 & -5.89483 & 1.22345 & 0.7015 & 0.27801587 & \\
+            0.3 & -5.65014 & 1.5742 & 0.951714 & & \\
+            0.6 & -5.17788 & 2.2404 & & & \\
+            1.0 & -4.28172 & & & & \\
+          \end{array}
+        \]
+
+        \underline{Construction}:
+        \[
+          \begin{aligned}
+            P_4(x) &= f[0.0] + f[0.0,0.1](x-0.0) +
+            f[0.0,0.1,0.3](x-0.0)(x-0.1) \\
+            &\quad + f[0.0,0.1,0.3,0.6](x-0.0)(x-0.1)(x-0.3) \\
+            &\quad + f[0.0,0.1,0.3,0.6,1.0](x-0.0)(x-0.1)(x-0.3)(x-0.6)
+          \end{aligned}
+        \]
+        \boxed{
+          \begin{aligned}
+            P_4(x) = &-6.00000 + 1.0517x + 0.5725x(x - 0.1) \\
+            &+ 0.215x(x - 0.1)(x - 0.3) \\
+            &+ 0.06301587x(x - 0.1)(x - 0.3)(x - 0.6)
+          \end{aligned}
+        }
+
+        \medskip
+
+      \item[b.] Add \( f(1.1) = -3.99583 \). Extended divided differences:
+        \[
+          \begin{array}{c|cccccc}
+            1.1 & -3.99583 & & & & & \\
+            1.0 & -4.28172 & 2.8589 & & & & \\
+            0.6 & -5.17788 & 2.2404 & 1.237 & & & \\
+            0.3 & -5.65014 & 1.5742 & 0.951714 & 0.35660714 & & \\
+            0.1 & -5.89483 & 1.22345 & 0.7015 & 0.27801587 & 0.07859127 & \\
+            0.0 & -6.00000 & 1.0517 & 0.5725 & 0.215 & 0.06301587 &
+            0.01415945 \\
+          \end{array}
+        \]
+
+        Fifth-degree term:
+        \[
+          f[0.0,0.1,0.3,0.6,1.0,1.1](x-0.0)(x-0.1)(x-0.3)(x-0.6)(x-1.0)
+        \]
+        \boxed{P_5(x) = P_4(x) + 0.01415945x(x - 0.1)(x - 0.3)(x -
+        0.6)(x - 1.0)}
+
+    \end{enumerate}
+
+    \subsection*{3.4 Hermite Interpolation}
+
+    4b, 7
+
+    \begin{enumerate}
+      \item[4.] Let \( f(x) = 3xe^x - e^{2x} \).
+        \begin{enumerate}
+          \item[a.]  Approximate \(f(1.03)\) by the Hermite
+            interpolating polynomial of degree at most 3 using \(x_0
+            = 1\) and \(x_1 = 1.05\). Compare the actual error to the
+            error bound.
+
+            \underline{Sol}:\\
+            \[
+              \begin{array}{l}
+                \text{Nodes: } \{1, 1, 1.05, 1.05\} \\
+                \text{Compute } f(1) = 3e - e^2 \approx -4.6708,
+                \quad f'(1) = 6e - 2e^2 \approx -0.7013 \\
+                f(1.05) \approx -3.9959, \quad f'(1.05) \approx 1.9174 \\
+                \text{Divided differences:} \\
+                \begin{array}{c|cccc}
+                  1.0 & -4.6708 & -0.7013 & 5.9468 & -19.8403 \\
+                  1.0 & -4.6708 & 13.4922 & -19.8403 & \\
+                  1.05 & -3.9959 & 1.9174 & & \\
+                  1.05 & -3.9959 & & & \\
+                \end{array} \\
+                H_3(x) = -4.6708 - 0.7013(x-1) + 5.9468(x-1)^2 -
+                19.8403(x-1)^2(x-1.05) \\
+                \boxed{H_3(1.03) \approx -4.1812} \\
+                \text{Actual error: } |f(1.03) - H_3(1.03)| \approx 0.0021 \\
+                \text{Error bound: } \frac{\max_{\xi \in [1,1.05]}
+                |f^{(4)}(\xi)|}{24}|(0.03)^2(-0.02)^2| \leq 0.0036
+              \end{array}
+            \]
+
+          \item[b.] Repeat (a) with the Hermite interpolating
+            polynomial of degree at most 5, using \(x_0 = 1\), \(x_1
+            = 1.05\), and \(x_2 = 1.07\).
+
+            \underline{Sol}:\\
+            \[
+              \begin{array}{l}
+                \text{Nodes: } \{1, 1, 1.05, 1.05, 1.07, 1.07\} \\
+                \text{Extended divided differences:} \\
+                \begin{array}{c|cccccc}
+                  1.0 & -4.6708 & -0.7013 & 5.9468 & -19.8403 &
+                  42.711 & -68.45 \\
+                  1.0 & -4.6708 & 13.4922 & -19.8403 & 22.8707 & -68.45 & \\
+                  1.05 & -3.9959 & 1.9174 & 3.814 & -45.63 & & \\
+                  1.05 & -3.9959 & 5.7304 & -45.63 & & & \\
+                  1.07 & -3.5343 & 3.1021 & & & & \\
+                  1.07 & -3.5343 & & & & & \\
+                \end{array} \\
+                H_5(x) = H_3(x) + 42.711(x-1)^2(x-1.05)^2 -
+                68.45(x-1)^2(x-1.05)^2(x-1.07) \\
+                \boxed{H_5(1.03) \approx -4.1794} \\
+                \text{Actual error: } |f(1.03) - H_5(1.03)| \approx 0.0003 \\
+                \text{Error bound: } \frac{\max
+                |f^{(6)}(\xi)|}{720}|(0.03)^2(-0.02)^2(-0.04)^2| \leq 0.0005
+              \end{array}
+            \]
+        \end{enumerate}
+
+    \end{enumerate}
+
+    \item[7.] A car traveling along a straight road is clocked at a number of points. The data from the observations are given in the following table, where the time is in seconds, the distance is in feet, and the speed is in feet per second.
+        \begin{enumerate}
+                \item[a.] 
+                    \underline{Sol}:\\
+            \[
+            \begin{array}{l}
+            \text{Hermite polynomial } H_9(x) \text{ constructed with nodes at } t=0,3,5,8,13 \\ \text{ (each with distance and speed):} \\
+            H_9(x) = 75x + 0.222222x^2(x-3) \\ - 0.0311111x^2(x-3)^2 - 0.00644444x^2(x-3)^2(x-5) \\
+            \quad + 0.00226389x^2(x-3)^2(x-5)^2 - 0.000913194x^2(x-3)^2(x-5)^2(x-8) \\
+            \quad + 0.000130527x^2(x-3)^2(x-5)^2(x-8)^2 \\ - 0.0000202236x^2(x-3)^2(x-5)^2(x-8)^2(x-13) \\
+            \boxed{H_9(10) = 743 \text{ ft}}, \quad \boxed{H_9'(10) = 48 \text{ ft/s}}
+            \end{array}
+            \]
+            
+                \item[b.] 
+                    \underline{Sol}:\\
+            \[
+            \boxed{\text{First exceeds 55 mph (80.6 ft/s) at } t \approx 5.6488 \text{ seconds}}
+            \]
+            
+                \item[c.] 
+                    \underline{Sol}:\\
+            \[
+            \boxed{\text{Maximum speed } = 119.423 \text{ ft/s } \approx 81.425 \text{ mph}}
+            \]
+        \end{enumerate}
+
+\end{enumerate}

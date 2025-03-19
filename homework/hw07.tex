@@ -1,0 +1,139 @@
+\begin{center}
+    \section*{Homework 07 - 4.2}
+    Due Wed 3/19 \\
+    Uzair Hamed Mohammed
+  \end{center}
+  
+  \subsection*{4.2 Basic Quadrature Rules}
+  
+3f, 4f, 5f, 6f, 9, 10, 11
+
+\begin{enumerate}
+  \item[3.] Use the Trapezoidal Rule to approximate the following integrals:
+  
+    \begin{enumerate}
+      \item[f.] \(\int_{0}^{0.35} \frac{2}{x^2 - 4} dx\)
+  
+      \underline{Sol}:\\
+
+\[
+    \begin{array}{l}
+       h = \frac{0.35 - 0}{4} = 0.0875 \\
+       x_0 = 0, \, x_1 = 0.0875, \, x_2 = 0.175, \, x_3 = 0.2625, \, x_4 = 0.35 \\
+       f(0) = -0.5, \, f(0.0875) \approx -0.501006, \, f(0.175) \approx -0.503922 \\
+       f(0.2625) \approx -0.508772, \, f(0.35) \approx -0.515700 \\
+       \text{Approximation} = \frac{0.0875}{2} \left[ -0.5 + 2(-1.5137) - 0.5157 \right] \\
+       \approx 0.04375 \times -4.0431 \approx -0.1768 \\
+       \boxed{-0.1768}
+    \end{array}
+\]
+    \end{enumerate}
+
+  \item[4.] Use the error bound formula, the Trapezoidal Rule, and the results of the previous exercise to find a bound for the error, and compare the bound to the actual error:
+  
+  \begin{enumerate}
+    \item[f.] \(\int_{0}^{0.35} \frac{2}{x^2 - 4} dx\)
+    
+    \underline{Sol}:\\
+
+\[
+    \begin{array}{l}
+       f''(x) = \frac{4(3x^2 + 4)}{(x^2 - 4)^3} \implies \max_{[0,0.35]} |f''(x)| \approx |f''(0.35)| \approx 0.2997 \\
+       E \leq \frac{(0.35)^3}{12 \cdot 4^2} \cdot 0.2997 = \frac{0.042875}{192} \cdot 0.2997 \approx 0.0000669 \\
+       \text{Exact Integral} = \left. \frac{1}{2} \ln\left|\frac{x - 2}{x + 2}\right| \right|_{0}^{0.35} \approx -0.17682 \\
+       \text{Actual Error} = | -0.17682 - (-0.17689) | \approx 0.0000656 \\
+       \boxed{6.69 \times 10^{-5}} \, (\text{Bound}), \quad \boxed{6.56 \times 10^{-5}} \, (\text{Actual})
+    \end{array}
+\]
+  \end{enumerate}
+
+
+  \item[5.] Use Simpson's Rule to approximate the following integrals:
+  
+  \begin{enumerate}
+    \item[f.] \(\int_{0}^{0.35} \frac{2}{x^2 - 4} dx\)
+    
+
+    \underline{Sol}:\\
+
+\[
+    \begin{array}{l}
+       n = 4, \quad h = \frac{0.35}{4} = 0.0875 \\
+       x_0 = 0, \, x_1 = 0.0875, \, x_2 = 0.175, \, x_3 = 0.2625, \, x_4 = 0.35 \\
+       f(x_0) = -0.5, \, f(x_1) \approx -0.501006, \, f(x_2) \approx -0.503922 \\
+       f(x_3) \approx -0.508772, \, f(x_4) \approx -0.515700 \\
+       \text{Approximation} = \frac{0.0875}{3} \left[ -0.5 + 4(-0.501006) + 2(-0.503922) + 4(-0.508772) - 0.515700 \right] \\
+       = \frac{0.0875}{3} \times -6.062656 \approx -0.1768 \\
+       \boxed{-0.1768}
+    \end{array}
+\]
+
+  \end{enumerate}
+
+  \item[6.] Error bound:
+  
+  \begin{enumerate}
+    \item[f.] \(\int_{0}^{0.35} \frac{2}{x^2 - 4} dx\)
+    
+    \underline{Sol}:\\
+
+\[
+    \begin{array}{l}
+       f''''(x) = \frac{48(5x^4 + 40x^2 + 16)}{(x^2 - 4)^5} \implies \max_{[0,0.35]} |f''''(x)| \approx 1.150 \\
+       E \leq \frac{(0.35)}{180} \cdot (0.0875)^4 \cdot 1.150 \approx \frac{0.35}{180} \cdot 0.0000586 \cdot 1.150 \\
+       \approx 1.31 \times 10^{-7} \\
+       \text{Exact Integral} \approx -0.17682 \\
+       \text{Actual Error} = | -0.17682 - (-0.1768) | \approx 2.0 \times 10^{-5} \\
+       \boxed{1.31 \times 10^{-7}} \, (\text{Bound}), \quad \boxed{2.0 \times 10^{-5}} \, (\text{Actual})
+    \end{array}
+\]
+
+  \end{enumerate}
+
+  \item[9.] The Trapezoidal Rule applied to \(\int_{0}^{2} f(x) dx\) gives the value 4, and Simpson's Rule gives the value 2. What is \(f(1)\)?
+  
+  \underline{Sol}:\\
+
+  \[
+      \begin{array}{l}
+         \text{Trapezoidal Rule (n=1):} \quad \frac{2}{2}[f(0) + f(2)] = 4 \implies f(0) + f(2) = 4 \\
+         \text{Simpson’s Rule (n=2):} \quad \frac{1}{3}[f(0) + 4f(1) + f(2)] = 2 \implies f(0) + 4f(1) + f(2) = 6 \\
+         \text{Subtract equations:} \quad 4f(1) = 2 \implies f(1) = \frac{1}{2} \\
+         \boxed{\frac{1}{2}}
+      \end{array}
+  \]
+  
+  \item[10.] The Trapezoidal Rule applied to \(\int_{0}^{2} f(x) dx\) gives the value 5, and the Midpoint Rule gives the value 4. What value does Simpson's Rule give?
+  
+  \underline{Sol}:\\
+
+  \[
+      \begin{array}{l}
+         \text{Trapezoidal Rule (n=1):} \quad \frac{2}{2}[f(0) + f(2)] = 5 \implies f(0) + f(2) = 5 \\
+         \text{Midpoint Rule (n=1):} \quad 2 \cdot f(1) = 4 \implies f(1) = 2 \\
+         \text{Simpson’s Rule (n=2):} \quad \frac{2}{6}[f(0) + 4f(1) + f(2)] = \frac{1}{3}[5 + 4(2)] = \frac{13}{3} \\
+         \boxed{\dfrac{13}{3}}
+      \end{array}
+  \]
+  
+  \item[11.] Find the constants \(c_0, c_1\), and \(x_1\) so that the following quadrature formula gives exact results for all polynomials of degree at most 2:
+  
+      \[
+          \int_{0}^{1} f(x) dx = c_0 f(0) + c_1 f(x_1)
+      \]
+
+
+      \underline{Sol}:\\
+
+      \[
+          \begin{array}{l}
+             \text{For } f(x) = 1: \quad c_0 + c_1 = \int_{0}^{1} 1 \, dx = 1 \quad (1) \\
+             \text{For } f(x) = x: \quad c_1 x_1 = \int_{0}^{1} x \, dx = \frac{1}{2} \quad (2) \\
+             \text{For } f(x) = x^2: \quad c_1 x_1^2 = \int_{0}^{1} x^2 \, dx = \frac{1}{3} \quad (3) \\
+             \text{From (2) and (3):} \quad \frac{c_1 x_1^2}{c_1 x_1} = \frac{\frac{1}{3}}{\frac{1}{2}} \implies x_1 = \frac{2}{3} \\
+             \text{Substitute } x_1 = \frac{2}{3} \text{ into (2):} \quad c_1 = \frac{1}{2} \cdot \frac{3}{2} = \frac{3}{4} \\
+             \text{From (1):} \quad c_0 = 1 - \frac{3}{4} = \frac{1}{4} \\
+             \boxed{c_0 = \dfrac{1}{4}, \quad c_1 = \dfrac{3}{4}, \quad x_1 = \dfrac{2}{3}}
+          \end{array}
+      \]
+\end{enumerate}
