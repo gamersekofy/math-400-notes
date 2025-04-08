@@ -1,0 +1,74 @@
+\begin{center}
+  \section*{Homework 09 - 4.3}
+  Due Tue 4/8 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{4.3 Composite Quadrature Rules}
+
+7 (a, b), 13, 11 (optional)
+
+\begin{enumerate}
+  \item[7.] Determine the values of \(n\) and \(h\) required to
+    approximate \(\int_{0}^{2} \frac{1}{x + 4} dx\) to within
+    \(10^{-5}\) and compute the approximation.
+
+    \begin{enumerate}
+      \item[a.] Use the Composite Trapezoidal rule.
+
+        \underline{Sol}:\\
+        \[
+          \begin{array}{l}
+            \displaystyle |E_T| \leq \frac{2}{12} h^2 \cdot
+            \frac{1}{32} \leq 10^{-5} \implies h^2 \leq 0.00192
+            \implies h \leq 0.0438 \\
+            \displaystyle n \geq \frac{2}{h} \approx 45.64 \implies n
+            = 46,\quad h = \frac{2}{46} \approx 0.0435 \\
+            \displaystyle \int_{0}^{2} \frac{1}{x+4} \, dx \approx
+            \boxed{0.40547}
+          \end{array}
+        \]
+
+      \item[b.] Use the Composite Simpson's rule.
+
+        \underline{Sol}:\\
+        \[
+          \begin{array}{l}
+            \displaystyle |E_S| \leq \frac{2}{180} h^4 \cdot
+            \frac{3}{128} \leq 10^{-5} \implies h^4 \leq 0.0384
+            \implies h \leq 0.441 \\
+            \displaystyle n \geq \frac{2}{h} \approx 4.535 \implies n
+            = 6,\quad h = \frac{1}{3} \\
+            \displaystyle \int_{0}^{2} \frac{1}{x+4} \, dx \approx
+            \boxed{0.405466}
+          \end{array}
+        \]
+
+      \item[13.] A car laps a race track in 84 seconds. The speed of
+        the car at each 6-second interval is determined using a radar
+        gun and is given from the beginning of the lap, in feet per
+        second, by the entries in the following table. How long is the track?
+
+        \[
+          \begin{array}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l}
+            \text{Time} & 0 & 6 & 12 & 18 & 24 & 30 & 36 & 42 & 48 &
+            54 & 60 & 66 & 72 & 78 & 84 \\
+            \hline
+            \text{Speed} & 124 & 134 & 148 & 156 & 147 & 133 & 121 &
+            109 & 99 & 85 & 78 & 89 & 104 & 116 & 123
+          \end{array}
+        \]
+
+        \underline{Sol}:\\
+        \[
+          \begin{array}{l}
+            \displaystyle \text{Distance} = \frac{6}{3} \Biggl[ 124 +
+              4(134 + 156 + 133 + 109 + 85 + 89 + 116) \\
+              \displaystyle \quad + 2(148 + 147 + 121 + 99 + 78 + 104)
+            + 123 \Biggr] \\
+            \displaystyle = 2 \times 4929 = \boxed{9858} \text{ feet}
+          \end{array}
+        \]
+
+    \end{enumerate}
+\end{enumerate}
