@@ -1,0 +1,411 @@
+\begin{center}
+  \section*{Homework 12 - 7.4, 7.6}
+  Due Wed 4/30 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{7.4 The Jacobi and Gauss-Seidel Methods}
+
+1a, 2a, 4a, 5
+
+\begin{enumerate}
+  \item[1.] Find the first 2 iterations of the Jacobi method for the
+    following linear systems, using \(x^{(0)} = 0\).
+    \begin{enumerate}
+      \item[a.] \[
+          \begin{array}{l}
+            3x_1 - x_2 + x_3 = 1, \\
+            3x_1 + 6x_2 + 2x_3 = 0, \\
+            3x_1 + 3x_2 + 7x_3 = 4.
+          \end{array}
+        \]
+
+        \underline{Sol}:\\
+        For the Jacobi method, solve each equation for \(x_1, x_2, x_3\):
+        \[
+          \begin{array}{l}
+            x_1^{(k+1)} = \frac{1 + x_2^{(k)} - x_3^{(k)}}{3}, \\
+            x_2^{(k+1)} = \frac{-3x_1^{(k)} - 2x_3^{(k)}}{6}, \\
+            x_3^{(k+1)} = \frac{4 - 3x_1^{(k)} - 3x_2^{(k)}}{7}.
+          \end{array}
+        \]
+        Starting with \(x^{(0)} = [0, 0, 0]\):
+        \[
+          \begin{array}{l}
+            \text{Iteration 1:} \\
+            x_1^{(1)} = \frac{1 + 0 - 0}{3} = \frac{1}{3}, \\
+            x_2^{(1)} = \frac{-3(0) - 2(0)}{6} = 0, \\
+            x_3^{(1)} = \frac{4 - 0 - 0}{7} = \frac{4}{7}. \\
+            \\
+            \text{Iteration 2:} \\
+            x_1^{(2)} = \frac{1 + 0 - \frac{4}{7}}{3} =
+            \frac{\frac{3}{7}}{3} = \frac{1}{7}, \\
+            x_2^{(2)} = \frac{-3\left(\frac{1}{3}\right) -
+            2\left(\frac{4}{7}\right)}{6} = \frac{-1 -
+            \frac{8}{7}}{6} = -\frac{5}{14}, \\
+            x_3^{(2)} = \frac{4 - 3\left(\frac{1}{3}\right) - 0}{7} =
+            \frac{3}{7}.
+          \end{array}
+        \]
+        After two iterations: \(\boxed{\left[ \dfrac{1}{7},
+        -\dfrac{5}{14}, \dfrac{3}{7} \right]}\).
+    \end{enumerate}
+
+  \item[2.] Find the first 2 iterations of the Jacobi method for the
+    following linear systems, using the Gauss-Seidel method.
+    \begin{enumerate}
+      \item[a.] \[
+          \begin{array}{l}
+            3x_1 - x_2 + x_3 = 1, \\
+            3x_1 + 6x_2 + 2x_3 = 0, \\
+            3x_1 + 3x_2 + 7x_3 = 4.
+          \end{array}
+        \]
+
+        \underline{Sol}:\\
+        For the Gauss-Seidel method, update variables sequentially
+        using the latest values:
+        \[
+          \begin{array}{l}
+            x_1^{(k+1)} = \frac{1 + x_2^{(k)} - x_3^{(k)}}{3}, \\
+            x_2^{(k+1)} = \frac{-3x_1^{(k+1)} - 2x_3^{(k)}}{6}, \\
+            x_3^{(k+1)} = \frac{4 - 3x_1^{(k+1)} - 3x_2^{(k+1)}}{7}.
+          \end{array}
+        \]
+        Starting with \(x^{(0)} = [0, 0, 0]\):
+        \[
+          \begin{array}{l}
+            \text{Iteration 1:} \\
+            x_1^{(1)} = \frac{1 + 0 - 0}{3} = \frac{1}{3}, \\
+            x_2^{(1)} = \frac{-3\left(\frac{1}{3}\right) - 2(0)}{6} =
+            -\frac{1}{6}, \\
+            x_3^{(1)} = \frac{4 - 3\left(\frac{1}{3}\right) -
+            3\left(-\frac{1}{6}\right)}{7} = \frac{13}{21}. \\
+            \\
+            \text{Iteration 2:} \\
+            x_1^{(2)} = \frac{1 + \left(-\frac{1}{6}\right) -
+            \frac{13}{21}}{3} = \frac{1}{9}, \\
+            x_2^{(2)} = \frac{-3\left(\frac{1}{9}\right) -
+            2\left(\frac{13}{21}\right)}{6} = -\frac{2}{9}, \\
+            x_3^{(2)} = \frac{4 - 3\left(\frac{1}{9}\right) -
+            3\left(-\frac{2}{9}\right)}{7} = \frac{13}{21}.
+          \end{array}
+        \]
+        After two iterations: \(\boxed{\left[ \dfrac{1}{9},
+        -\dfrac{2}{9}, \dfrac{13}{21} \right]}\).
+    \end{enumerate}
+
+  \item[4.] Use the Gauss-Seidel method to solve the linear system
+    with \(TOL = 10^{-3}\) in the \(l_{\infty}\) norm.
+    \begin{enumerate}
+      \item[a.] \[
+          \begin{array}{l}
+            3x_1 - x_2 + x_3 = 1, \\
+            3x_1 + 6x_2 + 2x_3 = 0, \\
+            3x_1 + 3x_2 + 7x_3 = 4.
+          \end{array}
+        \]
+    \end{enumerate}
+
+    \underline{Sol}:\\
+    Apply the Gauss-Seidel method with \(TOL = 10^{-3}\) in the
+    \(l_\infty\) norm. Update equations:
+    \[
+      \begin{array}{l}
+        x_1^{(k+1)} = \dfrac{1 + x_2^{(k)} - x_3^{(k)}}{3}, \\
+        x_2^{(k+1)} = \dfrac{-3x_1^{(k+1)} - 2x_3^{(k)}}{6}, \\
+        x_3^{(k+1)} = \dfrac{4 - 3x_1^{(k+1)} - 3x_2^{(k+1)}}{7}.
+      \end{array}
+    \]
+    Starting with \(x^{(0)} = [0, 0, 0]\):
+    \[
+      \begin{array}{l}
+        \text{Iteration 1:} \\
+        x_1^{(1)} = \dfrac{1}{3} \approx 0.3333, \\
+        x_2^{(1)} = -\dfrac{1}{6} \approx -0.1667, \\
+        x_3^{(1)} = \dfrac{13}{21} \approx 0.6190. \\
+        \text{Difference: } \max(|0.3333|, |0.1667|, |0.6190|) =
+        0.6190 > 10^{-3}. \\
+        \\
+        \text{Iteration 2:} \\
+        x_1^{(2)} = \dfrac{1}{9} \approx 0.1111, \\
+        x_2^{(2)} = -\dfrac{2}{9} \approx -0.2222, \\
+        x_3^{(2)} = \dfrac{13}{21} \approx 0.6190. \\
+        \text{Difference: } \max(0.2222, 0.0555, 0.0000) = 0.2222 > 10^{-3}. \\
+        \\
+        \text{Iteration 3:} \\
+        x_1^{(3)} \approx 0.0529, \\
+        x_2^{(3)} \approx -0.2328, \\
+        x_3^{(3)} \approx 0.6485. \\
+        \text{Difference: } \max(0.0582, 0.0106, 0.0295) = 0.0582 > 10^{-3}. \\
+        \\
+        \text{Iteration 4:} \\
+        x_1^{(4)} \approx 0.0396, \\
+        x_2^{(4)} \approx -0.2360, \\
+        x_3^{(4)} \approx 0.6556. \\
+        \text{Difference: } \max(0.0133, 0.0032, 0.0071) = 0.0133 > 10^{-3}. \\
+        \\
+        \text{Iteration 5:} \\
+        x_1^{(5)} \approx 0.0361, \\
+        x_2^{(5)} \approx -0.2366, \\
+        x_3^{(5)} \approx 0.6574. \\
+        \text{Difference: } \max(0.0035, 0.0006, 0.0018) = 0.0035 > 10^{-3}. \\
+        \\
+        \text{Iteration 6:} \\
+        x_1^{(6)} \approx 0.0353, \\
+        x_2^{(6)} \approx -0.2368, \\
+        x_3^{(6)} \approx 0.6578. \\
+        \text{Difference: } \max(0.0008, 0.0002, 0.0004) = 0.0008 < 10^{-3}. \\
+      \end{array}
+    \]
+    Convergence achieved after 6 iterations. Solution:
+    \(\boxed{[0.0353, -0.2368, 0.6578]}\).
+
+  \item[5.] The linear system
+    \[
+      \begin{aligned}
+        x_1 - x_3 &= 0.2, \\
+        - \frac{1}{2} x_1 + x_2 - \frac{1}{4} x_3 &= -1.425, \\
+        x_1 - \frac{1}{2} x_2 + x_3 &= 2
+      \end{aligned}
+    \]
+
+    has the solution \((0.9, -0.8, 0.7)^t\).
+
+    \underline{Sol}:\\
+    \textbf{a.} Check strict diagonal dominance for \(A\):
+    \[
+      \begin{array}{l}
+        \text{Row 1: } |1| \not> |0| + |-1| =1 \quad (\text{Not dominant}), \\
+        \text{Row 2: } |1| > \left|-\dfrac{1}{2}\right| +
+        \left|-\dfrac{1}{4}\right| = \dfrac{3}{4} \quad (\text{Dominant}), \\
+        \text{Row 3: } |1| \not> |1| + \left|-\dfrac{1}{2}\right| =
+        \dfrac{3}{2} \quad (\text{Not dominant}). \\
+      \end{array}
+    \]
+    Matrix \(A\) is \textbf{not} strictly diagonally dominant.
+
+    \textbf{b.} Compute spectral radius of Jacobi matrix \(T_j\).
+    Split \(A = D - L - U\), then \(T_j = D^{-1}(L + U)\):
+    \[
+      T_j =
+      \begin{bmatrix}
+        0 & 0 & -1 \\
+        -\dfrac{1}{2} & 0 & -\dfrac{1}{4} \\
+        1 & -\dfrac{1}{2} & 0
+      \end{bmatrix}.
+    \]
+    Characteristic equation: \(\det(T_j - \lambda I) = -\lambda^3 -
+    0.875\lambda - 0.25 = 0\). Solving numerically:
+    \[
+      \lambda_1 \approx -0.2646, \quad \lambda_{2,3} \approx 0.1323
+      \pm 0.962i \quad (\text{modulus } \approx 0.971).
+    \]
+    Spectral radius \(\rho(T_j) \approx \boxed{0.971}\).
+
+    \textbf{c.} Jacobi iterations (starting at \(x^{(0)} = 0\)):
+    \[
+      \begin{array}{l}
+        x_1^{(k+1)} = 0.2 + x_3^{(k)}, \\
+        x_2^{(k+1)} = -1.425 + 0.5x_1^{(k)} + 0.25x_3^{(k)}, \\
+        x_3^{(k+1)} = 2 - x_1^{(k)} + 0.5x_2^{(k)}. \\
+      \end{array}
+    \]
+    Iterations converge slowly (spectral radius \(\approx\) 0.971).
+    After \(\approx\) 150 iterations (within 300), tolerance
+    \(10^{-2}\) is achieved.
+    \textbf{d.} Modified system:
+    \[
+      \begin{aligned}
+        x_1 - 2x_3 &= 0.2, \\
+        -0.5x_1 + x_2 -0.25x_3 &= -1.425, \\
+        x_1 -0.5x_2 + x_3 &= 2.
+      \end{aligned}
+    \]
+    New \(A_{\text{new}} =
+      \begin{bmatrix}
+        1 & 0 & -2 \\
+        -0.5 & 1 & -0.25 \\
+        1 & -0.5 & 1
+    \end{bmatrix}\). Jacobi matrix \(T_j^{\text{new}}\) has
+    eigenvalues with spectral radius \(\approx 1.394 > 1\). Thus,
+    Jacobi method \textbf{diverges}.
+\end{enumerate}
+
+\subsection*{7.6 Error Bounds and Iterative Refinement}
+
+1a, 1e, 2e, 3
+
+\begin{enumerate}
+  \item[1.] Compute the \(l_{infty}\) condition numbers of the
+    following matrices.
+    \begin{enumerate}
+      \item[a.] \[
+          \begin{bmatrix}
+            \frac{1}{2} & \frac{1}{3} \\
+            \frac{1}{3} & \frac{1}{4}
+          \end{bmatrix}
+        \]
+      \item[e.] \[
+          \begin{bmatrix}
+            1 & -1 & -1 \\
+            0 & 1 & -1 \\
+            0 & 0 & -1
+          \end{bmatrix}
+        \]
+    \end{enumerate}
+
+    \underline{Sol}:\\
+    \textbf{a.} Compute \(\kappa_\infty(A)\) for \(
+      \begin{bmatrix} \frac{1}{2} & \frac{1}{3} \\ \frac{1}{3} & \frac{1}{4}
+    \end{bmatrix}\):
+    \[
+      \begin{array}{l}
+        \|A\|_\infty = \max\left(\frac{1}{2} + \frac{1}{3},
+        \frac{1}{3} + \frac{1}{4}\right) = \frac{5}{6},  \\
+        A^{-1} = 72
+        \begin{bmatrix} \frac{1}{4} & -\frac{1}{3} \\ -\frac{1}{3} &
+          \frac{1}{2}
+        \end{bmatrix} =
+        \begin{bmatrix} 18 & -24 \\ -24 & 36
+        \end{bmatrix},
+        \|A^{-1}\|_\infty = \max(42, 60) = 60,
+        \kappa_\infty(A) = \frac{5}{6} \times 60 = \boxed{50}.
+      \end{array}
+    \]
+
+    \textbf{e.} Compute \(\kappa_\infty(A)\) for \(
+      \begin{bmatrix} 1 & -1 & -1 \\ 0 & 1 & -1 \\ 0 & 0 & -1
+    \end{bmatrix}\):
+    \[
+      \|A\|_\infty = \max(3, 2, 1) = 3,
+      A^{-1} =
+      \begin{bmatrix} 1 & 1 & -2 \\ 0 & 1 & -1 \\ 0 & 0 & -1
+      \end{bmatrix},
+      \|A^{-1}\|_\infty = \max(4, 2, 1) = 4,
+      \kappa_\infty(A) = 3 \times 4 = \boxed{12}.
+    \]
+
+  \item[2.] The following linear system \(Ax = b\) has \(x\) as the
+    actual solution and \(\tilde{x}\) as an approximate solution.
+    Using the results of the previous exercise, compute \(||x -
+    \tilde{x}||_{\infty}\) and
+    \[
+      K_{\infty} (A) = \frac{||b - A \tilde{x}||_{\infty}}{||A||_{\infty}}
+    \]
+
+    \begin{enumerate}
+      \item[e.] \[
+          \begin{aligned}
+            x_1 - x_2 - x_3 &= 2 \pi, \\
+            x_2 - x_3 &= 0, \\
+            -x_3 &= \pi, \\
+          \end{aligned}
+        \]
+        \(x = (0, - \pi, - \pi )^t, \tilde{x} = (-0.1, -3.15, -3.14)^t.\)
+    \end{enumerate}
+
+    \underline{Sol}:\\
+    Compute \(\|x - \tilde{x}\|_\infty\):
+    \[
+      x - \tilde{x} =
+      \begin{bmatrix} 0 - (-0.1) \\ -\pi - (-3.15) \\ -\pi - (-3.14)
+      \end{bmatrix} \approx
+      \begin{bmatrix} 0.1 \\ 0.0084 \\ 0.0016
+      \end{bmatrix}, \quad \|x - \tilde{x}\|_\infty = \boxed{0.1}.
+    \]
+
+    Compute \(K_\infty(A) = \frac{\|b - A\tilde{x}\|_\infty}{\|A\|_\infty}\):
+    Residual \(b - A\tilde{x}\):
+    \[
+      \begin{bmatrix} 2\pi - (-0.1 - (-3.15) - (-3.14) \\ 0 - (-3.15
+          - (-3.14)) \\ \pi - (-(-3.14))
+        \end{bmatrix} \approx
+        \begin{bmatrix} 0.0932 \\ 0.01 \\ 0.0016
+        \end{bmatrix}, \quad \|b - A\tilde{x}\|_\infty \approx 0.0932.
+      \]
+      From Exercise 1(e), \(\|A\|_\infty = 3\):
+      \[
+        K_\infty(A) = \frac{0.0932}{3} \approx \boxed{0.0311}.
+      \]
+
+    \item[3.] The linear system
+      \[
+        \begin{bmatrix}
+          1 & 2 \\
+          1.0001 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+          x_1 \\
+          x_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          3 \\
+          3.0001
+        \end{bmatrix}
+      \]
+
+      has the solution \((1, 1)^t\). Change \(A\) slightly to
+
+      \[
+        \begin{bmatrix}
+          1 & 2 \\
+          0.9999 & 2
+        \end{bmatrix}
+      \]
+
+      and consider the linear system
+
+      \[
+        \begin{bmatrix}
+          1 & 2 \\
+          0.9999 & 2
+        \end{bmatrix}
+        \begin{bmatrix}
+          x_1 \\
+          x_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          3 \\
+          3.0001
+        \end{bmatrix}.
+      \]
+
+      Compute the new solution using five-digit rounding arithmetic,
+      and compare the change in A to the change in x.
+
+      \underline{Sol}:\\
+      Solve perturbed system \(
+        \begin{bmatrix} 1 & 2 \\ 0.9999 & 2
+        \end{bmatrix}
+        \begin{bmatrix} x_1 \\ x_2
+        \end{bmatrix} =
+        \begin{bmatrix} 3 \\ 3.0001
+      \end{bmatrix}\):
+      \[
+        \begin{array}{l}
+          1.\ x_1 = 3 - 2x_2 \\
+          2.\ 0.9999(3 - 2x_2) + 2x_2 = 3.0001 \\
+          \Rightarrow 2.9997 - 1.9998x_2 + 2x_2 = 3.0001 \\
+          \Rightarrow 0.0002x_2 = 0.0004 \Rightarrow x_2 = 2 \\
+          3.\ x_1 = 3 - 2(2) = -1 \\
+        \end{array}
+      \]
+      New solution: \(\tilde{x} =
+        \begin{bmatrix} -1 \\ 2
+      \end{bmatrix}\).
+
+      Compare perturbations:
+      \[
+        \begin{aligned}
+          \frac{\|A_{\text{new}} - A\|_\infty}{\|A\|_\infty} &=
+          \frac{|0.9999 - 1.0001|}{\max(3, 3.0001)} =
+          \frac{0.0002}{3} \approx 0.0067\%, \\
+          \frac{\|x - \tilde{x}\|_\infty}{\|x\|_\infty} &=
+          \frac{\max(|1 - (-1)|, |1 - 2|)}{1} = \frac{2}{1} = 200\%.
+        \end{aligned}
+      \]
+      Result: \(\boxed{(-1, 2)}\).
+  \end{enumerate}
