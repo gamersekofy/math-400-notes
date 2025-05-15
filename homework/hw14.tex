@@ -1,0 +1,197 @@
+\begin{center}
+  \section*{Homework 14 - 8.4, 8.6}
+  Due Thu 5/15 \\
+  Uzair Hamed Mohammed
+\end{center}
+
+\subsection*{8.4 Chebyshev Polynomials}
+
+3b, 4b, 7
+
+\begin{enumerate}
+  \item[3b.] Use the zeroes of \(\tilde{T}_4\) to construct an
+    interpolating polynomial of degree 3 for the function \(f(x) = \sin x\).
+
+    \underline{Sol}:\\
+    Chebyshev zeros for \(\tilde{T}_4\) on \([-1,1]\):
+    \[
+      x_k = \cos\left(\frac{(2k+1)\pi}{8}\right) \approx
+      \{0.9238795,\; 0.3826834,\; -0.3826834,\; -0.9238795\}
+    \]
+    Function values at nodes:
+    \[
+      \sin(x_k) \approx \{0.7956988,\; 0.3745929,\; -0.3745929,\; -0.7956988\}
+    \]
+    Newton's divided differences (ordered as \(x_0 > x_1 > x_2 > x_3\)):
+    \[
+      \begin{aligned}
+        f[x_0] &= 0.7956988, \\
+        f[x_0,x_1] &\approx \frac{0.3745929 - 0.7956988}{0.3826834 -
+        0.9238795} \approx 0.7778, \\
+        f[x_0,x_1,x_2] &\approx \frac{0.9789 - 0.7778}{-0.7654}
+        \approx -0.1539, \\
+        f[x_0,x_1,x_2,x_3] &\approx \frac{-0.1539 - 0.1539}{-1.8478}
+        \approx -0.1667.
+      \end{aligned}
+    \]
+    Interpolating polynomial in Newton form:
+    \[
+      \boxed{
+        \begin{array}{l}
+          P_3(x) = 0.7957 + 0.7778(x - 0.9238795) - 0.1539(x -
+          0.9238795)(x - 0.3826834) \\ - 0.1667(x - 0.9238795)(x -
+          0.3826834)(x + 0.3826834)
+      \end{array}}
+    \]
+
+  \item[4b.] Find a bound for the maximum error of the approximation
+    computed in the previous exercise.
+
+    \underline{Sol}:\\
+    Error bound for interpolation using Chebyshev nodes:
+    \[
+      \|f - P_3\|_{\infty} \leq \frac{\|f^{(4)}\|_{\infty}}{4!} \cdot
+      \max_{x \in [-1,1]} \left| \prod_{k=0}^3 (x - x_k) \right|
+    \]
+    Fourth derivative of \(f(x) = \sin x\) is \(\sin x\), so
+    \(\|f^{(4)}\|_{\infty} = 1\). For Chebyshev zeros of
+    \(\tilde{T}_4\), the product term is minimized:
+    \[
+      \max_{x \in [-1,1]} \left| \prod_{k=0}^3 (x - x_k) \right| =
+      \frac{1}{2^{4-1}} = \frac{1}{8}
+    \]
+    Thus, the error bound:
+    \[
+      \frac{1}{4!} \cdot \frac{1}{8} = \frac{1}{192}
+    \]
+    Final bound: \(\boxed{\dfrac{1}{192}}\).
+
+  \item[7.] Show that for any positive integers \(i\) and \(j\) with
+    \(i > j\), we have
+    \[
+      T_i (x) T_j (x) = \frac{1}{2} \lbrack T_{i + j} (x) + T_{i - j}
+      (x) \rbrack.
+    \]
+
+    \underline{Sol}:\\
+    Using the definition \( T_n(x) = \cos(n \arccos x) \), let \(
+    \theta = \arccos x \). Then:
+    \[
+      T_i(x)T_j(x) = \cos(i\theta)\cos(j\theta)
+    \]
+    Apply trigonometric identity:
+    \[
+      \cos(i\theta)\cos(j\theta) = \frac{1}{2}\left[\cos((i+j)\theta)
+      + \cos((i-j)\theta)\right]
+    \]
+    Recognize \( \cos((i \pm j)\theta) = T_{i \pm j}(x) \), hence:
+    \[
+      T_i(x)T_j(x) = \frac{1}{2}\left[T_{i+j}(x) + T_{i-j}(x)\right]
+    \]
+    Thus, \(\boxed{T_i (x) T_j (x) = \frac{1}{2} \left[ T_{i + j} (x)
+    + T_{i - j} (x) \right]}\).
+\end{enumerate}
+
+\subsection*{8.6 Trigonometric Polynomial Approximation}
+
+1, 5, 9, 14
+
+\begin{enumerate}
+  \item[1.] Find the continuous least squares trigonometric
+    polynomial \(S_2 (x)\) for \(f(x) = x^2\) on  \(\lbrack - \pi,
+    \pi \rbrack\).
+
+    \underline{Sol}:\\
+    Compute coefficients for \( S_2(x) = \frac{a_0}{2} + a_1 \cos x +
+    a_2 \cos 2x + b_1 \sin x + b_2 \sin 2x \). Since \( f(x) = x^2 \)
+    is even, \( b_1 = b_2 = 0 \).
+
+    \[
+      \begin{array}{l}
+        a_0 = \frac{1}{\pi} \int_{-\pi}^\pi x^2 dx = \frac{2\pi^2}{3} \\
+        a_1 = \frac{1}{\pi} \int_{-\pi}^\pi x^2 \cos x dx = -4 \\
+        a_2 = \frac{1}{\pi} \int_{-\pi}^\pi x^2 \cos 2x dx = 1
+      \end{array}
+    \]
+
+    \[
+      \boxed{S_2(x) = \frac{\pi^2}{3} - 4\cos x + \cos 2x}
+    \]
+
+  \item[5.] Find the general continuous least squares trigonometric
+    polynomial \(S_n (x)\) for
+    \[
+      f(x) =
+      \begin{cases}
+        0, \textrm{ if } - \pi < x \leq 0, \\
+        1, \textrm{ if } 0 < x < \pi.
+      \end{cases}
+    \]
+
+    \underline{Sol}:\\
+    Compute Fourier coefficients for \( f(x) \):
+    \[
+      a_0 = \frac{1}{\pi} \int_{-\pi}^\pi f(x)dx = \frac{1}{\pi}
+      \int_0^\pi 1 \, dx = 1 \implies \frac{a_0}{2} = \frac{1}{2}
+    \]
+    For \( k \geq 1 \):
+    \[
+      a_k = \frac{1}{\pi} \int_0^\pi \cos(kx)dx = 0, \quad
+      b_k = \frac{1}{\pi} \int_0^\pi \sin(kx)dx = \frac{1 - (-1)^k}{k\pi}
+    \]
+    \( S_n(x) \) includes only sine terms with odd \( k \):
+    \[
+      S_n(x) = \frac{1}{2} + \sum_{k=1}^n \frac{1 - (-1)^k}{k\pi} \sin(kx)
+    \]
+    Simplifying for odd \( k \):
+    \[
+      S_n(x) = \frac{1}{2} + \sum_{m=1}^{\lfloor n/2 \rfloor}
+      \frac{2}{(2m-1)\pi} \sin((2m-1)x)
+    \]
+    Final general form: \(\boxed{\frac{1}{2} + \sum_{k=1}^{n} \frac{1
+    - (-1)^k}{k\pi} \sin(kx)}\).
+
+  \item[9.] Determine the discrete least squares trigonometric
+    polynomial \(S_3 (x)\), using \(m = 4\) for \(f(x) = e^x \cos
+    2x\) on the interval \(\lbrack - \pi, \pi \rbrack\). Compute the
+    error \(E(S_3)\).
+
+    \underline{Sol}:\\
+    \[
+      \begin{aligned}
+        a_0 &= \frac{1}{4} \sum_{j=0}^7 f(x_j) \approx -0.9937858
+        \implies \frac{a_0}{2} = -0.4968929, \\
+        a_1 &\approx 0.2391965, \quad a_2 \approx 1.515393, \quad a_3
+        \approx 0.2391965, \\
+        b_1 &\approx -1.150649, \quad b_2 = b_3 = 0.
+      \end{aligned}
+    \]
+    \[
+      S_3(x) = -0.4968929 + 0.2391965\cos x + 1.515393\cos 2x +
+      0.2391965\cos 3x - 1.150649\sin x.
+    \]
+    \[
+      E(S_3) = \sum_{j=0}^7 \left|f(x_j) - S_3(x_j)\right|^2 = \boxed{7.271197}.
+    \]
+
+  \item[14.] In Example 1, the Fourier series was determined for
+    \(f(x) = |x|\). Use this series and the assumption that it
+    represents \(f\) at zero to find the value of the convergent
+    infinite series \(\sum_{k = 0}^{\infty} \frac{1}{(2k + 1)^2}\).
+
+    \underline{Sol}:\\
+    Fourier series for \( f(x) = |x| \) on \( [-\pi, \pi] \):
+    \[
+      |x| = \frac{\pi}{2} - \frac{4}{\pi} \sum_{k=0}^\infty
+      \frac{\cos((2k+1)x)}{(2k+1)^2}.
+    \]
+    At \( x = 0 \):
+    \[
+      0 = \frac{\pi}{2} - \frac{4}{\pi} \sum_{k=0}^\infty \frac{1}{(2k+1)^2}.
+    \]
+    Solving:
+    \[
+      \sum_{k=0}^\infty \frac{1}{(2k+1)^2} = \frac{\pi^2}{8}.
+    \]
+    \(\boxed{\dfrac{\pi^2}{8}}\).
+\end{enumerate}
